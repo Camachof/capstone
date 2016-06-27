@@ -27,8 +27,11 @@ DEstructables is a web application inspired by Instructables that will be build 
 ## Wireframes
 
 https://www.draw.io/#Lproject_detail.xml
+
 https://www.draw.io/#Lproject_new.xml
+
 https://www.draw.io/#Lproject_textEditor.xml
+
 https://www.draw.io/#Lroot_project.xml
   
 ## Component Hierarchy
