@@ -27,9 +27,18 @@ DEstructables is a web application inspired by Instructables that will be build 
 ## Wireframes
 
 https://www.draw.io/#Lproject_detail.xml
+<<<<<<< HEAD
 https://www.draw.io/#Lroot_project.xml
 https://www.draw.io/#Lproject_textEditor.xml
 https://www.draw.io/#Lproject_new.xml
+=======
+
+https://www.draw.io/#Lproject_new.xml
+
+https://www.draw.io/#Lproject_textEditor.xml
+
+https://www.draw.io/#Lroot_project.xml
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
   
 ## Component Hierarchy
 
@@ -136,16 +145,25 @@ See docs/api.md in the repo.
 
 Objective: Functioning rails project with Authentication
 
+<<<<<<< HEAD
  * create new project
  * create User model
  * authentication
  * user signup/signin pages
  * blank landing page after signin
+=======
+ - [ ] create new project
+ - [ ] create User model
+ - [ ] authentication
+ - [ ] user signup/signin pages
+ - [ ] blank landing page after signin
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
 
 ### Phase 2: Project Model, API, and basic APIUtil (1.5 days, W1 Th 12pm)
 
 Objective: Project can be created, read, edited and destroyed through the API.
 
+<<<<<<< HEAD
  * create Project model
  * seed the database with a small amount of test data
  * CRUD API for projects (ProjectsController)
@@ -153,41 +171,74 @@ Objective: Project can be created, read, edited and destroyed through the API.
  * setup Webpack & Flux scaffold
  * setup APIUtil to interact with the API
  * test out API interaction in the console.
+=======
+ - [ ] create Project model
+ - [ ] seed the database with a small amount of test data
+ - [ ] CRUD API for projects (ProjectsController)
+ - [ ] jBuilder views for projects
+ - [ ] setup Webpack & Flux scaffold
+ - [ ] setup APIUtil to interact with the API
+ - [ ] test out API interaction in the console.
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
  
 ### Phase 3: Flux Architecture and Router (1.5 days, W1 F 6pm)
 
 Objective: Projects can be created, read, edited and destroyed with the user interface.
 
+<<<<<<< HEAD
  * setup the flux loop with skeleton files
  * setup React Router
  * implement each project component, building out the flux loop as needed.
  * ProjectsIndex
  * ProjectItem
  * ProjectForm
+=======
+ - [ ] setup the flux loop with skeleton files
+ - [ ] setup React Router
+ - [ ] implement each project component, building out the flux loop as needed.
+ - [ ] ProjectsIndex
+ - [ ] ProjectItem
+ - [ ] ProjectForm
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
  <!--* ProjectUser ?-->
  
 ### Phase 4: Start Styling (0.5 days, W2 M 12pm)
 
 Objective: Existing pages (including signup/signin) will look good.
 
+<<<<<<< HEAD
  * create a basic style guide
  * position elements on the page
  * add basic colors & styles
+=======
+ - [ ] create a basic style guide
+ - [ ] position elements on the page
+ - [ ] add basic colors & styles
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
 
 ### Phase 5: Comments (1 day, W2 Tu 12pm)
 
 Objective: Comments belong to Projects
 
+<<<<<<< HEAD
 * create comments model
 * build out API, Flux loop, and components for:
  * Comments CRUD
  * comments requires a project
 * Use CSS to style new views
+=======
+- [ ] create comments model
+- [ ] build out API, Flux loop, and components for:
+ - [ ] Comments CRUD
+ - [ ] comments requires a project
+- [ ] Use CSS to style new views
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
 
 ### Phase 6: Tags (1 days, W2 Th 12pm)
 
 Objective: Projects can be tagged with multiple tags, and tags are searchable.
 
+<<<<<<< HEAD
  * create Tag model and join table
  * build out API, Flux loop, and components for:
   * fetching tags for projects
@@ -195,21 +246,41 @@ Objective: Projects can be tagged with multiple tags, and tags are searchable.
   * creating tags while adding to projects
   * searching projects by tag
  * Style new elements
+=======
+ - [ ] create Tag model and join table
+ - [ ] build out API, Flux loop, and components for:
+  - [ ] fetching tags for projects
+  - [ ] adding tags to projects
+  - [ ] creating tags while adding to projects
+  - [ ] searching projects by tag
+ - [ ] Style new elements
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
 
 ### Phase 7: Allow Complex Styling in Notes (0.5 days, W2 Th 6pm)
 
 objective: Enable complex styling of projects.
 
+<<<<<<< HEAD
  * Integrate Draft.js to make projects!!!
  * Use Rails helpers to sanitize HTML before rendering.
+=======
+ - [ ] Integrate Draft.js to make projects!!!
+ - [ ] Use Rails helpers to sanitize HTML before rendering.
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
 
 ### Phase 8: Styling Cleanup and Seeding (1 day, W2 F 6pm)
 
 objective: Make the site feel more cohesive and awesome.
 
+<<<<<<< HEAD
  * Get feedback on my UI from others
  * Refactor HTML classes & CSS rules
  * Add modals, transitions, and other styling flourishes.
+=======
+ - [ ] Get feedback on my UI from others
+ - [ ] Refactor HTML classes & CSS rules
+ - [ ] Add modals, transitions, and other styling flourishes.
+>>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
  
 Bonus Features (TBD)
 
