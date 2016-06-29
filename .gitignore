@@ -11,3 +11,18 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore node modules
+node_modules
+
+# Ignore bundle
+bundle.js
+bundle.js.map

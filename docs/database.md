@@ -6,12 +6,6 @@ column name | data type | details
 id          | integer   | not null, primary key
 title       | string    | not null
 body        | text      | not null
-<<<<<<< HEAD
-=======
-views       | integer   | not null
-favorite    | integer   | not null
->>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
-category_id | string    | not null, limited to an array of provided categories
 author_id   | integer   | not null, foreign key (references users), indexed
 
 ## comments
