@@ -1,3 +1,7 @@
+## Heroku!
+
+https://instructables.herokuapp.com/
+
 ## DEstructables
 
 DEstructables is a web application inspired by Instructables that will be build using Ruby on Rails and React.js.
@@ -23,7 +27,7 @@ DEstructables is a web application inspired by Instructables that will be build 
   * Adequate styling
   * Smooth, bug-free navigation
   * Adequate and appropriate seeds to demonstrate the feature
-  
+
 ## Wireframes
 
 https://www.draw.io/#Lproject_detail.xml
@@ -39,7 +43,7 @@ https://www.draw.io/#Lproject_textEditor.xml
 
 https://www.draw.io/#Lroot_project.xml
 >>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
-  
+
 ## Component Hierarchy
 
 **Bolded** components are associated with routes.
@@ -53,7 +57,7 @@ https://www.draw.io/#Lroot_project.xml
     * ProjectItemCommentForm
   * **ProjectForm**
   * **ProjectUser**
-    
+
 ## Routes
 
 Definetly need help figuring this out!
@@ -62,7 +66,7 @@ Definetly need help figuring this out!
   * **component:** `ProjectsIndex` **path:** index
   * **component:** `ProjectIndexItem` **path:** `project/:projectId`
   * **component:** `ProjectUser` **path:** `project/:userId`
-  
+
 
 ## Flux Cycles
 
@@ -180,7 +184,7 @@ Objective: Project can be created, read, edited and destroyed through the API.
  - [ ] setup APIUtil to interact with the API
  - [ ] test out API interaction in the console.
 >>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
- 
+
 ### Phase 3: Flux Architecture and Router (1.5 days, W1 F 6pm)
 
 Objective: Projects can be created, read, edited and destroyed with the user interface.
@@ -201,7 +205,7 @@ Objective: Projects can be created, read, edited and destroyed with the user int
  - [ ] ProjectForm
 >>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
  <!--* ProjectUser ?-->
- 
+
 ### Phase 4: Start Styling (0.5 days, W2 M 12pm)
 
 Objective: Existing pages (including signup/signin) will look good.
@@ -281,11 +285,8 @@ objective: Make the site feel more cohesive and awesome.
  - [ ] Refactor HTML classes & CSS rules
  - [ ] Add modals, transitions, and other styling flourishes.
 >>>>>>> 7a6446b7651417366463163c229bf0ba43133c86
- 
+
 Bonus Features (TBD)
 
 Develop featured project channels
 Create categories for projects
-
-
-  

@@ -1,25 +1,25 @@
 "use strict";
 
 const SessionApiUtil = {
-  signup(user, success){
+  signup(user, success, error){
     $.ajax({
       url: 'api/user',
       method: 'POST',
       data: {user},
       success,
-      error: function () {
-			  console.log("Signup error in SessionApiUtil#signup");
+      error(message) {
+			  error("signup", message.responseJSON);
 			}
     });
   },
-  login(user, success){
+  login(user, success, error){
     $.ajax({
       url: 'api/session',
       method: 'POST',
       data: {user},
       success,
-      error: function () {
-			  console.log("Login error in SessionApiUtil#login");
+      error(message) {
+			  error("login", message.responseJSON);
 			}
     });
   },
@@ -28,8 +28,8 @@ const SessionApiUtil = {
       url: 'api/session',
       method: 'DELETE',
       success,
-      error: function () {
-			  console.log("Logout error in SessionApiUtil#logout");
+      error(message) {
+			  error("logout", message.response.JSON);
 			}
     });
   },

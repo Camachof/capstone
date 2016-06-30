@@ -7,7 +7,11 @@ const SessionStore = new Store(AppDispatcher);
 let _currentUser = {};
 
 const _logIn = function(currentUser){
-  _currentUser = currentUser;
+  if (currentUser === undefined){
+    _currentUser = {};
+  } else {
+    _currentUser = currentUser;
+  }
 };
 
 const _logOut = function(){
@@ -32,7 +36,6 @@ SessionStore.__onDispatch = function(payload){
       _logOut(payload);
       SessionStore.__emitChange();
       break;
-
   }
 };
 
