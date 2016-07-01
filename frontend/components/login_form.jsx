@@ -33,6 +33,10 @@ const LoginForm = React.createClass({
     e.preventDefault();
     SessionActions.login({username: this.state.username, password: this.state.password});
   },
+  _onSignup(e){
+    e.preventDefault();
+    hashHistory.push(`/signup`);
+  },
   render(){
     const errors = [];
     for (var i in this.state.errors) {
@@ -44,12 +48,16 @@ const LoginForm = React.createClass({
     this.state.errors = {};
 
     return(
-      <form onSubmit={this._onSubmit}>
-        <ul>{errors}</ul>
-        <input value={this.state.username} onChange={this._onName}></input>
-        <input value={this.state.password} type="password" onChange={this._onPass}></input>
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <h1>Log in!</h1>
+        <button onClick={this._onSignup}>Sign Up!</button>
+        <form onSubmit={this._onSubmit}>
+          <ul>{errors}</ul>
+          <input value={this.state.username} onChange={this._onName}></input>
+          <input value={this.state.password} type="password" onChange={this._onPass}></input>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 });

@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: doilr7vvv
+  api_key: '233992345123585'
+  api_secret: dFxJii6_hS_a91mHoO_-YonWQz0
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: doilr7vvv
+  api_key: '233992345123585'
+  api_secret: dFxJii6_hS_a91mHoO_-YonWQz0
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: doilr7vvv
+  api_key: '233992345123585'
+  api_secret: dFxJii6_hS_a91mHoO_-YonWQz0
+  enhance_image_tag: true
+  static_image_support: false

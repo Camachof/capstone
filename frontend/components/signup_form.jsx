@@ -16,9 +16,7 @@ const LoginForm = React.createClass({
     ErrorStore.addListener(this._onError);
   },
   _onError(){
-    if (ErrorStore.form() === 'login'){
-      this.setState({ errors: ErrorStore.formErrors()});
-    }
+    this.setState({ errors: ErrorStore.formErrors('signup')});
   },
   _onChange(){
     if (SessionStore.currentUser()){
@@ -35,14 +33,31 @@ const LoginForm = React.createClass({
     e.preventDefault();
     SessionActions.signup(this.state);
   },
+  _onLogin(e){
+    e.preventDefault();
+    hashHistory.push(`/login`);
+  },
   render(){
+    const errors = [];
+    for (var i in this.state.errors) {
+      if (this.state.errors.hasOwnProperty(i)) {
+        errors.push(`${i} ` + this.state.errors[i]);
+      }
+    }
+    // hacky way to remove error from greeting. consider fixing.
+    this.state.errors = {};
+
     return(
-      <form onSubmit={this._onSubmit}>
-        <li>signup page yoooo</li>
-        <input value={this.state.username} onChange={this._onName} />
-        <input value={this.state.password} type="password" onChange={this._onPass} />
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <h1>Sign Up!</h1>
+        <button onClick={this._onLogin}>Log in!</button>
+        <form onSubmit={this._onSubmit}>
+          <ul>{errors}</ul>
+          <input value={this.state.username} onChange={this._onName} />
+          <input value={this.state.password} type="password" onChange={this._onPass} />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 });

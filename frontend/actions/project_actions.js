@@ -6,6 +6,9 @@ module.exports= {
   fetchAllProjects(){
     ProjectApiUtil.fetchAllProjects(this.receiveAllProjects);
   },
+  fetchProject(id){
+    ProjectApiUtil.fetchProject(id, this.receiveProject);
+  },
   createProject(){
     ProjectApiUtil.createProject(this.receiveProject);
   },

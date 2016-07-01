@@ -10,6 +10,15 @@ const ProjectApiUtil = {
       }
     });
   },
+  fetchProject(id, callback){
+    $.ajax({
+      url: `/api/projects/${id}`,
+      method: 'GET',
+      success(response){
+        callback(response);
+      }
+    });
+  },
   createProject(project, callback){
     $.ajax({
       url: `/api/projects/${project.id}`,

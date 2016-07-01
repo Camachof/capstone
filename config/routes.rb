@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
-    resources :projects
+    resources :projects, only: [:create, :index, :update, :show]
   end
 
   root "static_pages#root"

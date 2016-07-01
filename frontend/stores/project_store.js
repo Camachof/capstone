@@ -16,15 +16,26 @@ ProjectStore.resetStore = function(projects){
   _projects = {};
 
   projects.forEach( project => {
-    debugger
     _projects[project.id] = project;
   });
+};
+
+ProjectStore.addProject = function(project){
+  _projects[project.id] = project;
+};
+
+ProjectStore.find = function(id){
+  return _projects[id];
 };
 
 ProjectStore.__onDispatch = function(payload){
   switch (payload.actionType) {
     case ProjectConstants.PROJECTS_RECEIVED:
       this.resetStore(payload.projects);
+      ProjectStore.__emitChange();
+      break;
+    case ProjectConstants.PROJECT_RECEIVED:
+      this.addProject(payload.project);
       ProjectStore.__emitChange();
       break;
   }

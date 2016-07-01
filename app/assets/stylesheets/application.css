@@ -13,3 +13,84 @@
  *= require_tree .
  *= require_self
  */
+
+header {
+
+  position: relative;
+  min-width: 1030px;
+  min-height: 99px;
+  color: #333;
+}
+
+ .top_header {
+   display: flex;
+   background-color: #eeeeee;
+   justify-content: space-around;
+   flex-direction: row;
+   align-content: center;
+}
+
+.top_header {
+   height: 61px;
+ }
+
+ .header_link {
+  background-color: transparent;
+  border-color: #dedede;
+  color: #333;
+  padding: 6px 12px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  align-content:  center;
+ }
+
+.projects_index {
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap:wrap;
+  align-content: center;
+  margin: 200px;
+}
+
+.project_info {
+  background: #fff;
+  padding: 10px 13px;
+  margin-bottom: 10px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.project_item_title {
+  text-decoration: none;
+  cursor: pointer;
+  width: 131px;
+  height: 16px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+}
+.project_item {
+  padding-bottom: 12px;
+  background: #fff;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
+.project_item_body {
+
+}
+.project_item_title {
+  background: #fff;
+  padding: 10px 13px;
+  margin-bottom: 10px;
+  height: 50px;
+  overflow: hidden;
+}
+.project_item_image {
+ width: 324px;
+ height: 270px;
+}
