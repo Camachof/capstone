@@ -2,7 +2,8 @@ class Api::ProjectsController < ApplicationController
 
   def index
     # make it efficient
-    @projects = Project.all.includes :author
+    @projects = Project.includes(:author)
+    debugger
     render :index
   end
 
@@ -26,7 +27,7 @@ class Api::ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:title, :body, :author_id, :images)
+    params.require(:project).permit(:title, :body, :user_id, :images)
   end
 
 end
