@@ -3,6 +3,7 @@ const LoginForm = require('./login_form.jsx');
 const SignupForm = require('./signup_form.jsx');
 const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
+const ProjectForm = require('./project_form.jsx');
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -55,6 +56,7 @@ const App = React.createClass({
             </div>
           </div>
         </header>
+        <ProjectForm/>
         {this.props.children}
       </div>
     );

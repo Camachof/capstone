@@ -2,6 +2,9 @@ const React = require('react');
 const ProjectActions = require('../actions/project_actions');
 const ProjectStore = require('../stores/project_store.js');
 
+const ReactRouter = require('react-router');
+const hashHistory = ReactRouter.hashHistory;
+
 const ProjectIndex = React.createClass({
   getInitialState: function() {
     return {projects: ProjectStore.all()};
@@ -13,11 +16,16 @@ const ProjectIndex = React.createClass({
   _onChange(){
     this.setState({projects: ProjectStore.all()});
   },
+  _takeToProject(e){
+    hashHistory.push(`projects/${e.target.value}`);
+  },
   render(){
-    const projects = this.state.projects.map( project => {  
+    const projects = this.state.projects.map( project => {
       return (
         <div className="project_item">
-          <img className="project_item_image" src={project.images}></img>
+          <a onClick={this._takeToProject}>
+            <img value={project.id} className="project_item_image" src={project.images}></img>
+          </a>
           <div className="project_info">
             <h1 className="project_item_title" >{project.title}</h1>
             <h3 className="project_item_body" >{project.body}</h3>

@@ -31,6 +31,7 @@ const LoginForm = React.createClass({
   },
   _onSubmit(e){
     e.preventDefault();
+    debugger;
     SessionActions.login({username: this.state.username, password: this.state.password});
   },
   _onSignup(e){

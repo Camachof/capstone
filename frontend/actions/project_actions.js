@@ -9,8 +9,8 @@ module.exports= {
   fetchProject(id){
     ProjectApiUtil.fetchProject(id, this.receiveProject);
   },
-  createProject(){
-    ProjectApiUtil.createProject(this.receiveProject);
+  createProject(project){
+    ProjectApiUtil.createProject(project, this.receiveProject);
   },
 
   receiveAllProjects(payload){

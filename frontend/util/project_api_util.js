@@ -21,8 +21,9 @@ const ProjectApiUtil = {
   },
   createProject(project, callback){
     $.ajax({
-      url: `/api/projects/${project.id}`,
+      url: `/api/projects/`,
       method: 'POST',
+      data: {project: project},
       success(response){
         callback(response);
       }
