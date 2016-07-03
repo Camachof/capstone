@@ -7,8 +7,8 @@ const ProjectStore = new Store(AppDispatcher);
 let _projects = {};
 
 ProjectStore.all = function(){
-  return Object.keys(_projects).map( project => {
-    return _projects[project];
+  return Object.keys(_projects).map( key => {
+    return _projects[key];
   });
 };
 

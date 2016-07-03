@@ -2,6 +2,7 @@ const React = require('react');
 const ProjectActions = require('../actions/project_actions');
 const UploadButton = require('./upload_button.jsx');
 const SessionStore = require('../stores/session_store.js');
+const ProjectStore = require('../stores/project_store.js');
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -18,8 +19,9 @@ const ProjectForm = React.createClass({
   },
   _newProject(e){
     e.preventDefault();
-    ProjectActions.createProject(this.state);
-    hashHistory.push(`projects/${this.state.id}`);
+    ProjectActions.createProject(this.state, function(project){
+      hashHistory.push(`/projects/${project.id}`);
+    });
   },
   onTitleChange(e){
     this.setState({title: e.target.value});

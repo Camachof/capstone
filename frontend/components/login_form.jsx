@@ -4,6 +4,11 @@ const SessionStore = require('../stores/session_store.js');
 const ErrorStore = require('../stores/error_store.js');
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
+// bootstrap
+const FormGroup = require('react-bootstrap').FormGroup;
+const ControlLabel = require('react-bootstrap').ControlLabel;
+const FormControl = require('react-bootstrap').FormControl;
+const Button = require('react-bootstrap').Button;
 
 const LoginForm = React.createClass({
   getInitialState: function() {
@@ -20,7 +25,8 @@ const LoginForm = React.createClass({
   },
   _onChange(){
     if (SessionStore.currentUser()){
-      hashHistory.push(`/`);
+      this.props.closeModal();
+      hashHistory.push("/");
     }
   },
   _onName(e){
@@ -31,12 +37,11 @@ const LoginForm = React.createClass({
   },
   _onSubmit(e){
     e.preventDefault();
-    debugger;
     SessionActions.login({username: this.state.username, password: this.state.password});
   },
   _onSignup(e){
     e.preventDefault();
-    hashHistory.push(`/signup`);
+    this.props.closeModal();
   },
   render(){
     const errors = [];
@@ -49,18 +54,44 @@ const LoginForm = React.createClass({
     this.state.errors = {};
 
     return(
-      <div>
-        <h1>Log in!</h1>
-        <button onClick={this._onSignup}>Sign Up!</button>
-        <form onSubmit={this._onSubmit}>
-          <ul>{errors}</ul>
-          <input value={this.state.username} onChange={this._onName}></input>
-          <input value={this.state.password} type="password" onChange={this._onPass}></input>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+      <form>
+
+        <FormGroup>
+          <FormControl
+            type="text"
+            value={this.state.username}
+            placeholder="Username"
+            onChange={this._onName}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <FormControl
+            type="password"
+            value={this.state.password}
+            placeholder="Password"
+            onChange={this._onPass}
+          />
+        </FormGroup>
+
+        <Button type="submit" onClick={this._onSubmit}>
+          Submit
+        </Button>
+
+      </form>
     );
   }
 });
+
+// <div>
+//   <h1>Log in!</h1>
+//   <form onSubmit={this._onSubmit}>
+//     <ul>{errors}</ul>
+//     <input value={this.state.username} onChange={this._onName}></input>
+//     <input value={this.state.password} type="password" onChange={this._onPass}></input>
+//     <input type="submit" value="Submit" />
+//   </form>
+//   <button onClick={this._onSignup}>Sign Up!</button>
+// </div>
 
 module.exports = LoginForm;

@@ -1,9 +1,10 @@
 const React = require('react');
-const LoginForm = require('./login_form.jsx');
-const SignupForm = require('./signup_form.jsx');
+
+const LoginModal = require('./login_modal.jsx');
+const SignUpModal = require('./signup_modal.jsx');
+
 const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
-const ProjectForm = require('./project_form.jsx');
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -12,14 +13,17 @@ const App = React.createClass({
   _onLogout(e){
     e.preventDefault();
     SessionActions.logout();
+    hashHistory.push(`/`);
   },
   _onSignup(e){
     e.preventDefault();
     hashHistory.push(`/signup`);
+    // change this to work with modal
   },
   _onLogin(e){
     e.preventDefault();
     hashHistory.push(`/login`);
+    // change this to work with modal
   },
   render(){
     let greeting;
@@ -28,12 +32,15 @@ const App = React.createClass({
 
     if (Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
       greeting = [
-        <SignupForm />
+        <div>
+          <SignUpModal />
+          <LoginModal />
+        </div>
       ];
     } else {
       greeting = [
-        <h1>Hello {currentUser.username}!</h1>,
-        <button onClick={this._onLogout}>Log out!</button>
+        <h5>Hello {currentUser.username}!</h5>,
+        <a onClick={this._onLogout}>Logout</a>
       ];
     }
 
@@ -50,13 +57,9 @@ const App = React.createClass({
                 <a title="Publish" className="header_link" >Publish</a>
                 <a title="Classes" className="header_link" >Classes</a>
             </div>
-            <div>
-              <button className="header_buttons" onClick={this._onSignup}>Sign Up!</button>
-              <button className="header_buttons" onClick={this._onLogin}>Log in!</button>
-            </div>
+            {greeting}
           </div>
         </header>
-        <ProjectForm/>
         {this.props.children}
       </div>
     );

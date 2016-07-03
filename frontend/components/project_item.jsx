@@ -17,7 +17,9 @@ const ProjectItem = React.createClass({
   },
   render(){
     let author;
-    if(!Object.keys(this.state.project).length === 0 && this.state.project.constructor === Object) {
+    if(Object.keys(this.state.project).length === 0 && this.state.project.constructor === Object) {
+      author = <h3>{this.state.project.author}</h3>;
+    } else {
       author = <h3>{this.state.project.author.username}</h3>;
     }
     return(

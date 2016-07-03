@@ -15,6 +15,9 @@ const ProjectIndex = require('./components/project_index.jsx');
 const LoginForm = require('./components/login_form.jsx');
 const SignupForm = require('./components/signup_form.jsx');
 const ProjectItem = require('./components/project_item.jsx');
+const ProjectForm = require('./components/project_form.jsx');
+const SignUpModal = require('./components/signup_modal.jsx');
+const LoginModal = require('./components/login_modal.jsx');
 // Testing
 const SessionApiUtil = require('./util/session_api_util.js');
 const SessionActions = require('./actions/session_actions.js');
@@ -27,8 +30,9 @@ const router = (
     <Route path="/" component={App} >
       <Route path="/projects" component={ProjectIndex} />
       <Route path="/projects/:projectId" component={ProjectItem}/>
-      <Route path="/login" component={LoginForm} />
-      <Route path="/signup" component={SignupForm} />
+      <Route path="/project/form" component={ProjectForm} />
+      <Route path="/signup" component={SignUpModal} />
+      <Route path="/login" component={LoginModal} />
     </Route>
   </Router>
   // Projectindex should be be IndexRoute. Just testing.
