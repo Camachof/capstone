@@ -25,6 +25,14 @@ const App = React.createClass({
     hashHistory.push(`/login`);
     // change this to work with modal
   },
+  _onExplore(e){
+    e.preventDefault();
+    hashHistory.push("/projects");
+  },
+  _onPublish(e){
+    e.preventDefault();
+    hashHistory.push("/project/form");
+  },
   render(){
     let greeting;
     let currentUser = SessionStore.currentUser();
@@ -52,10 +60,9 @@ const App = React.createClass({
         <header>
           <div className="top_header" >
             <div>
-                <img className="top_header_left_items" alt="Instructables" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467308145/header-logo_yroad2.png" />
-                <a title="Explore" className="header_link" >Explore</a>
-                <a title="Publish" className="header_link" >Publish</a>
-                <a title="Classes" className="header_link" >Classes</a>
+                <img alt="Instructables" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467308145/header-logo_yroad2.png" />
+                <a title="Explore" className="header_link" onClick={this._onExplore}>Explore</a>
+                <a title="Publish" className="header_link" onClick={this._onPublish}>Publish</a>
             </div>
             {greeting}
           </div>

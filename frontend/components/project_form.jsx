@@ -3,6 +3,11 @@ const ProjectActions = require('../actions/project_actions');
 const UploadButton = require('./upload_button.jsx');
 const SessionStore = require('../stores/session_store.js');
 const ProjectStore = require('../stores/project_store.js');
+// bootstrap
+const FormGroup = require('react-bootstrap').FormGroup;
+const ControlLabel = require('react-bootstrap').ControlLabel;
+const FormControl = require('react-bootstrap').FormControl;
+const Button = require('react-bootstrap').Button;
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -32,10 +37,26 @@ const ProjectForm = React.createClass({
   render(){
     return(
       <form>
+
+        <FormGroup>
+          <FormControl
+            type="text"
+            value={this.state.title}
+            placeholder="Title"
+            onChange={this.onTitleChange}
+          />
+        </FormGroup>
+
+        <FormGroup controlId="formControlsTextarea">
+          <FormControl componentClass="textarea" placeholder="Instructions" />
+        </FormGroup>
+
         <UploadButton uploaded={this.uploadedCallback}/>
-        <input onChange={this.onTitleChange} value={this.state.title} type="text"></input>
-        <input onChange={this.onBodyChange} value={this.state.body} type="textarea"></input>
-        <input type='submit' disabled={this.state.disabled} onClick={this._newProject}></input>
+
+        <Button disabled={this.state.disabled} type="submit" onClick={this._newProject}>
+          Submit
+        </Button>
+
       </form>
     );
   }

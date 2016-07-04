@@ -1,6 +1,7 @@
 const React = require('react');
 const ProjectActions = require('../actions/project_actions');
 const ProjectStore = require('../stores/project_store.js');
+const SlideShow = require('./slide_show.jsx');
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -34,11 +35,17 @@ const ProjectIndex = React.createClass({
       );
     });
     return(
-      <div className="projects_index">
-        {projects}
+      <div className="projects_index_wrapper">
+        <SlideShow/>
+        <h3 className="featured_projects" >Featured</h3>
+        <div className="projects_index">
+          {projects}
+        </div>
       </div>
     );
   }
 });
+
+
 
 module.exports = ProjectIndex;

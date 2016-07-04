@@ -14,38 +14,48 @@
  *= require_self
  */
 
- .DraftEditor-root {
-  /* Stop collapsing margins breaking our side control positioning */
-  padding-top: 1px;
-  position: relative;
+.slideShow {
+ /*just an image for now but will eventually add slideshow*/
+ /*background-image: url("http://res.cloudinary.com/doilr7vvv/image/upload/v1467580960/F7YJBD0IPEIICRW_nxrt1e.jpg");*/
+ /*background-size: cover;
+ position: relative;
+ overflow: hidden;
+ min-height: 650px;
+ height: 77%;
+ width: 100%;
+ z-index: 1;
+ display: block;
+ margin-bottom: -29px;*/
 }
 
-
-.public-DraftEditorPlaceholder-root {
-	position: absolute;
+.slideItem {
+  height: 650px !important;
+  width: 100%;
+  z-index: 1;
+  /*overflow-x: hidden;*/
+  object-fit: contain;
 }
+
+/*.carousel {
+  height: 650px !important;
+}*/
 
 header {
-
-  position: relative;
-  min-width: 1030px;
+  width: 100%;
   min-height: 99px;
   color: #333;
 }
 
- .top_header {
-   display: flex;
-   background-color: #eeeeee;
-   justify-content: space-around;
-   flex-direction: row;
-   align-content: center;
+.top_header {
+ display: flex;
+ background-color: #eeeeee;
+ justify-content: space-around;
+ flex-direction: row;
+ align-content: center;
+ height: 61px;
 }
 
-.top_header {
-   height: 61px;
- }
-
- .header_link {
+.header_link {
   background-color: transparent;
   border-color: #dedede;
   color: #333;
@@ -61,11 +71,15 @@ header {
 
 .projects_index {
   display:flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: row;
   flex-wrap:wrap;
-  align-content: center;
-  margin: 200px;
+}
+
+.projects_index_wrapper {
+  background: #f6f6f6;
+  border-bottom: 1px solid #bec6d1;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .project_info {
@@ -86,22 +100,29 @@ header {
   line-height: 20px;
 }
 .project_item {
-  padding-bottom: 12px;
+  margin: 12px;
   background: #fff;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.10);
 }
 .project_item_body {
-
-}
-.project_item_title {
   background: #fff;
   padding: 10px 13px;
   margin-bottom: 10px;
   height: 50px;
-  overflow: hidden;
 }
 .project_item_image {
  width: 324px;
  height: 270px;
+}
+
+.featured_projects {
+  text-decoration: none;
+  color: #333;
+  line-height: 40px;
+  display: block;
+  margin-left: 12px;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
 }
