@@ -2,7 +2,7 @@ class Api::ProjectsController < ApplicationController
 
   def index
     # make it efficient
-    @projects = Project.includes(:author)
+    @projects = Project.includes(:author, :comments)
     render :index
   end
 
@@ -13,7 +13,7 @@ class Api::ProjectsController < ApplicationController
 
   def show
     # more specific info particulat project and associations
-    @project = Project.includes(:author).find(params[:id])
+    @project = Project.includes(:author, :comments).find(params[:id])
     render :show
   end
 

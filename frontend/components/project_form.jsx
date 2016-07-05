@@ -48,7 +48,12 @@ const ProjectForm = React.createClass({
         </FormGroup>
 
         <FormGroup controlId="formControlsTextarea">
-          <FormControl componentClass="textarea" placeholder="Instructions" />
+          <FormControl
+            componentClass="textarea"
+            placeholder="Instructions"
+            value={this.state.body}
+            onChange={this.onBodyChange}
+          />
         </FormGroup>
 
         <UploadButton uploaded={this.uploadedCallback}/>
