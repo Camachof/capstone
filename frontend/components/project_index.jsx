@@ -18,7 +18,7 @@ const ProjectIndex = React.createClass({
     this.setState({projects: ProjectStore.all()});
   },
   _takeToProject(e){
-    hashHistory.push(`projects/${e.target.value}`);
+    hashHistory.push(`project/${e.target.value}`);
   },
   render(){
     const projects = this.state.projects.map( project => {

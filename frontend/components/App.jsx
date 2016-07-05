@@ -9,49 +9,49 @@ const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
 
 const App = React.createClass({
-  _onLogout(e){
-    e.preventDefault();
-    SessionActions.logout();
-    hashHistory.push(`/`);
+  getInitialState: function() {
+    return {
+      greeting: this._onGreet()
+    };
   },
-  _onSignup(e){
-    e.preventDefault();
-    hashHistory.push(`/signup`);
-    // change this to work with modal
+  componentDidMount(){
+    SessionStore.addListener(this._onChange);
   },
-  _onLogin(e){
-    e.preventDefault();
-    hashHistory.push(`/login`);
-    // change this to work with modal
+  _onChange(){
+    this.setState({greeting: this._onGreet()});
   },
-  _onExplore(e){
-    e.preventDefault();
-    hashHistory.push("/projects");
-  },
-  _onPublish(e){
-    e.preventDefault();
-    hashHistory.push("/project/form");
-  },
-  render(){
-    let greeting;
+  _onGreet(){
     let currentUser = SessionStore.currentUser();
     // greeting can be a greeting or the login/logout buttons
+    let greeting;
 
     if (Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
-      greeting = [
+      return [
         <div>
           <LogModal />
         </div>
       ];
     } else {
-      greeting = [
+      return [
         <h5>Hello {currentUser.username}!</h5>,
         <a onClick={this._onLogout}>Logout</a>
       ];
     }
-
-    // remeber to add greeting again after making header
-    // {greeting}
+  },
+  _onLogout(e){
+    e.preventDefault();
+    SessionActions.logout();
+    hashHistory.push(`/`);
+  },
+  _onExplore(e){
+    e.preventDefault();
+    hashHistory.push("/");
+  },
+  _onPublish(e){
+    e.preventDefault();
+    hashHistory.push("/form");
+  },
+  render(){
 
     return(
       <div>
@@ -62,13 +62,12 @@ const App = React.createClass({
                 <a title="Explore" className="header_link" onClick={this._onExplore}>Explore</a>
                 <a title="Publish" className="header_link" onClick={this._onPublish}>Publish</a>
             </div>
-            {greeting}
+            {this.state.greeting}
           </div>
         </header>
         {this.props.children}
       </div>
     );
-
   }
 });
 

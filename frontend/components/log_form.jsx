@@ -26,9 +26,10 @@ const LogForm = React.createClass({
   _onChange(){
     if (SessionStore.currentUser()){
       this.props.closeModal();
-      var re = /\/(.*?)\?/;
-      var strToMatch = window.location.hash;
-      var matched = re.exec(strToMatch)[1];
+      let regex = /\/(.*?)\?/;
+      let strToMatch = window.location.hash;
+      let matched = regex.exec(strToMatch)[1];
+      debugger;
       hashHistory.push(matched);
     }
   },
@@ -45,6 +46,10 @@ const LogForm = React.createClass({
   _onLogIn(e){
     e.preventDefault();
     SessionActions.login({username: this.state.username, password: this.state.password});
+  },
+  _onDemoLogIn(e){
+    e.preventDefault();
+    SessionActions.login({username: "guest", password: "password"});
   },
 
   render(){
@@ -84,6 +89,10 @@ const LogForm = React.createClass({
 
         <Button type="submit" onClick={this._onLogIn}>
           Log in!
+        </Button>
+
+        <Button type="submit" onClick={this._onDemoLogIn}>
+          Demo Log in!
         </Button>
 
       </form>

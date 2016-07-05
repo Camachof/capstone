@@ -23,19 +23,17 @@ const SessionApiUtil = require('./util/session_api_util.js');
 const SessionActions = require('./actions/session_actions.js');
 const SessionStore = require('./stores/session_store.js');
 window.SessionStore = SessionStore;
-//
 
 const router = (
   <Router history={hashHistory} >
     <Route path="/" component={App} >
-      <Route path="/projects" component={ProjectIndex} />
-      <Route path="/projects/:projectId" component={ProjectItem}/>
-      <Route path="/project/form" component={ProjectForm} />
+      <IndexRoute component={ProjectIndex} />
+      <Route path="/project/:projectId" component={ProjectItem}/>
+      <Route path="/form" component={ProjectForm} />
       <Route path="/signup" component={SignUpModal} />
       <Route path="/login" component={LoginModal} />
     </Route>
   </Router>
-  // Projectindex should be be IndexRoute. Just testing.
 );
 
 

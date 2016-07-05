@@ -15,6 +15,12 @@ const CommentForm = React.createClass({
       body: "", user_id: SessionStore.currentUser().id, project_id: this.props.projectId
     };
   },
+  componentDidMount(){
+    SessionStore.addListener(this._onChange);
+  },
+  _onChange(){
+    this.setState({user_id: SessionStore.currentUser().id});
+  },
   _onSubmit(e){
     e.preventDefault();
     CommentActions.createComment(this.state);

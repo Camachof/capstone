@@ -5,8 +5,8 @@ const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
 
 module.exports= {
-  fetchAllProjects(){
-    ProjectApiUtil.fetchAllProjects(this.receiveAllProjects);
+  fetchAllProjects(filter){
+    ProjectApiUtil.fetchAllProjects(filter, this.receiveAllProjects);
   },
   fetchProject(id){
     ProjectApiUtil.fetchProject(id, this.receiveProject);

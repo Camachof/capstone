@@ -2,7 +2,11 @@ class Api::ProjectsController < ApplicationController
 
   def index
     # make it efficient
-    @projects = Project.includes(:author, :comments)
+    if params[:filter]
+      @projects = Project.includes(:author, :comments).where("projects.title ILIKE %#{params[:filter]}%")
+    else
+      @projects = Project.includes(:author, :comments)
+    end
     render :index
   end
 

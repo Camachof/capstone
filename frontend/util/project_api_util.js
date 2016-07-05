@@ -1,10 +1,11 @@
 "use strict";
 
 const ProjectApiUtil = {
-  fetchAllProjects(callback){
+  fetchAllProjects(filter, callback){
     $.ajax({
       url: '/api/projects',
       method: 'GET',
+      data: {filter: filter},
       success(response){
         callback(response);
       }
