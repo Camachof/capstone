@@ -1,7 +1,7 @@
 const React = require('react');
 
 const LogModal = require('./log_modal.jsx');
-
+const SearchForm = require('./search_form.jsx');
 const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
 
@@ -63,6 +63,7 @@ const App = React.createClass({
                 <a title="Publish" className="header_link" onClick={this._onPublish}>Publish</a>
             </div>
             {this.state.greeting}
+            <SearchForm/>
           </div>
         </header>
         {this.props.children}

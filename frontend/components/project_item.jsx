@@ -25,7 +25,7 @@ const ProjectItem = React.createClass({
     }
 
     const comments = this.state.project.comments ? this.state.project.comments.map( comment => {
-      return <h3>{comment.body}</h3>;
+      return <h3 className="item_comments" >{comment.body}</h3>;
     }) : "";
     return(
       <div className="item_wrapper">

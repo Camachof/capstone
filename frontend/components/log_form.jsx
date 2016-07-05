@@ -29,7 +29,6 @@ const LogForm = React.createClass({
       let regex = /\/(.*?)\?/;
       let strToMatch = window.location.hash;
       let matched = regex.exec(strToMatch)[1];
-      debugger;
       hashHistory.push(matched);
     }
   },

@@ -2,6 +2,7 @@ const React = require('react');
 const ProjectActions = require('../actions/project_actions');
 const ProjectStore = require('../stores/project_store.js');
 const SlideShow = require('./slide_show.jsx');
+const Glyphicon = require('react-bootstrap').Glyphicon;
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -20,6 +21,10 @@ const ProjectIndex = React.createClass({
   _takeToProject(e){
     hashHistory.push(`project/${e.target.value}`);
   },
+  _onTitleClick(e){
+    e.preventDefault();
+    hashHistory.push(`/project/${e.target.value}`);
+  },
   render(){
     const projects = this.state.projects.map( project => {
       return (
@@ -28,8 +33,8 @@ const ProjectIndex = React.createClass({
             <img value={project.id} className="project_item_image" src={project.images}></img>
           </a>
           <div className="project_info">
-            <h1 className="project_item_title" >{project.title}</h1>
-            <h3 className="project_item_body" >{project.body}</h3>
+            <a className="project_item_title" value={project.id} onClick={this._onTitleClick} >{project.title}</a>
+            <p className="project_item_author" >by {project.author.username}</p>
           </div>
         </div>
       );
@@ -37,7 +42,7 @@ const ProjectIndex = React.createClass({
     return(
       <div className="projects_index_wrapper">
         <SlideShow/>
-        <h3 className="featured_projects" >Featured</h3>
+        <h3 className="featured_projects" ><Glyphicon glyph="star" /> Featured</h3>
         <div className="projects_index">
           {projects}
         </div>
