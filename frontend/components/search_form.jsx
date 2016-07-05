@@ -13,11 +13,12 @@ const Navbar = require('react-bootstrap').Navbar;
 const SearchForm = React.createClass({
   getInitialState: function() {
     return {
-      projects: []
+      value: ""
     };
   },
   componentDidMount(){
     ProjectStore.addListener(this._onChange);
+    ProjectActions.fetchAllProjects(this.state.value);
   },
   _onChange(){
     const filteredProjects = ProjectStore.all().map( project => {
@@ -27,6 +28,7 @@ const SearchForm = React.createClass({
   },
   handleChange(e){
     e.preventDefault();
+    this.setState({value: e.target.value});
     ProjectActions.fetchAllProjects(e.target.value);
   },
   render(){

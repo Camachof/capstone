@@ -13,7 +13,6 @@ const ProjectIndex = React.createClass({
   },
   componentDidMount(){
     ProjectStore.addListener(this._onChange);
-    ProjectActions.fetchAllProjects();
   },
   _onChange(){
     this.setState({projects: ProjectStore.all()});

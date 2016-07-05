@@ -14,6 +14,16 @@
  *= require_self
  */
 
+.item_comment {
+
+ }
+
+.item_comments_wrapper {
+  width: 646px;
+  padding: 20px;
+  border-top: 1px solid #e9e9e9;
+}
+
  .item_image {
   width: 100%;
   height: 600px;
