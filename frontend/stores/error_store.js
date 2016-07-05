@@ -7,11 +7,8 @@ let _form = "Signup Form";
 
 const ErrorStore = new Store(AppDispatcher);
 
-ErrorStore.formErrors = function(form){
-  if (form === _form){
-    return _errors;
-  }
-  return {};
+ErrorStore.formErrors = function(){
+  return _errors;
 };
 
 ErrorStore.form = function(){

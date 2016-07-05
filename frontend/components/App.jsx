@@ -1,7 +1,6 @@
 const React = require('react');
 
-const LoginModal = require('./login_modal.jsx');
-const SignUpModal = require('./signup_modal.jsx');
+const LogModal = require('./log_modal.jsx');
 
 const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
@@ -41,8 +40,7 @@ const App = React.createClass({
     if (Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
       greeting = [
         <div>
-          <SignUpModal />
-          <LoginModal />
+          <LogModal />
         </div>
       ];
     } else {

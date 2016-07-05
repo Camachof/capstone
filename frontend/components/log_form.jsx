@@ -10,7 +10,7 @@ const ControlLabel = require('react-bootstrap').ControlLabel;
 const FormControl = require('react-bootstrap').FormControl;
 const Button = require('react-bootstrap').Button;
 
-const LoginForm = React.createClass({
+const LogForm = React.createClass({
   getInitialState: function() {
     return {
       username: "", password: "", errors: {}
@@ -21,12 +21,15 @@ const LoginForm = React.createClass({
     ErrorStore.addListener(this._onError);
   },
   _onError(){
-    this.setState({ errors: ErrorStore.formErrors('login')});
+    this.setState({ errors: ErrorStore.formErrors()});
   },
   _onChange(){
     if (SessionStore.currentUser()){
       this.props.closeModal();
-      hashHistory.push("/");
+      var re = /\/(.*?)\?/;
+      var strToMatch = window.location.hash;
+      var matched = re.exec(strToMatch)[1];
+      hashHistory.push(matched);
     }
   },
   _onName(e){
@@ -35,14 +38,15 @@ const LoginForm = React.createClass({
   _onPass(e){
     this.setState({password: e.target.value});
   },
-  _onSubmit(e){
+  _onSignUp(e){
+    e.preventDefault();
+    SessionActions.signup({username: this.state.username, password: this.state.password});
+  },
+  _onLogIn(e){
     e.preventDefault();
     SessionActions.login({username: this.state.username, password: this.state.password});
   },
-  _onSignup(e){
-    e.preventDefault();
-    this.props.closeModal();
-  },
+
   render(){
     const errors = [];
     for (var i in this.state.errors) {
@@ -74,8 +78,12 @@ const LoginForm = React.createClass({
           />
         </FormGroup>
 
-        <Button type="submit" onClick={this._onSubmit}>
-          Submit
+        <Button type="submit" onClick={this._onSignUp}>
+          Sign Up!
+        </Button>
+
+        <Button type="submit" onClick={this._onLogIn}>
+          Log in!
         </Button>
 
       </form>
@@ -83,5 +91,4 @@ const LoginForm = React.createClass({
   }
 });
 
-
-module.exports = LoginForm;
+module.exports = LogForm;
