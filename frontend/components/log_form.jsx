@@ -24,13 +24,13 @@ const LogForm = React.createClass({
     this.setState({ errors: ErrorStore.formErrors()});
   },
   _onChange(){
-    if (SessionStore.currentUser()){
+    // if (SessionStore.currentUser()){
       this.props.closeModal();
-      let regex = /\/(.*?)\?/;
-      let strToMatch = window.location.hash;
-      let matched = regex.exec(strToMatch)[1];
-      hashHistory.push(matched);
-    }
+      // let regex = /\/(.*?)\?/;
+      // let strToMatch = window.location.hash;
+      // let matched = regex.exec(strToMatch)[1];
+      // hashHistory.push(matched);
+    // }
   },
   _onName(e){
     this.setState({username: e.target.value});

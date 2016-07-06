@@ -25,7 +25,7 @@ const ProjectForm = React.createClass({
   _newProject(e){
     e.preventDefault();
     ProjectActions.createProject(this.state, function(project){
-      hashHistory.push(`/projects/${project.id}`);
+      hashHistory.push(`/project/${project.id}`);
     });
   },
   onTitleChange(e){

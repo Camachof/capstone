@@ -4,6 +4,7 @@ const LogModal = require('./log_modal.jsx');
 const SearchForm = require('./search_form.jsx');
 const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
+const ProjectActions = require('../actions/project_actions');
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -11,7 +12,7 @@ const hashHistory = ReactRouter.hashHistory;
 const App = React.createClass({
   getInitialState: function() {
     return {
-      greeting: this._onGreet()
+      greeting: this._onGreet(), searched: ""
     };
   },
   componentDidMount(){
@@ -45,16 +46,21 @@ const App = React.createClass({
   },
   _onExplore(e){
     e.preventDefault();
+    ProjectActions.fetchAllProjects();
+    this.setState({searched: ""});
     hashHistory.push("/");
   },
   _onPublish(e){
     e.preventDefault();
     hashHistory.push("/form");
   },
+  _onSearch(){
+    this.setState({searched: "searched"});
+  },
   render(){
 
     return(
-      <div>
+      <div className={this.state.searched}>
         <header>
           <div className="top_header" >
             <div>
@@ -63,7 +69,7 @@ const App = React.createClass({
                 <a title="Publish" className="header_link" onClick={this._onPublish}>Publish</a>
             </div>
             {this.state.greeting}
-            <SearchForm/>
+            <SearchForm removeCarousel={this._onSearch}/>
           </div>
         </header>
         {this.props.children}

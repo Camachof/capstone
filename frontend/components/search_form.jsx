@@ -17,19 +17,17 @@ const SearchForm = React.createClass({
     };
   },
   componentDidMount(){
-    ProjectStore.addListener(this._onChange);
     ProjectActions.fetchAllProjects(this.state.value);
-  },
-  _onChange(){
-    const filteredProjects = ProjectStore.all().map( project => {
-      return <h1>{project.title}</h1>;
-    });
-    this.setState({projects: filteredProjects});
   },
   handleChange(e){
     e.preventDefault();
     this.setState({value: e.target.value});
-    ProjectActions.fetchAllProjects(e.target.value);
+  },
+  _onSubmit(e){
+    e.preventDefault();
+    this.setState({value: ""});
+    this.props.removeCarousel();
+    ProjectActions.fetchAllProjects(this.state.value);
   },
   render(){
     return(
@@ -42,13 +40,12 @@ const SearchForm = React.createClass({
               value={this.state.value}
               onChange={this.handleChange}
             />
+          <button onClick={this._onSubmit} type="submit">Submit</button>
           </FormGroup>
-          {' '}
-          <Button type="submit">Submit</Button>
         </Navbar.Form>
       </div>
     );
   }
 });
-// {this.state.projects}
+
 module.exports = SearchForm;

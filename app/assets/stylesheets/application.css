@@ -86,8 +86,13 @@
   width: 100%;
 }
 
+.searched .carousel {
+  max-height: 0;
+  transition: max-height 1.30s ease-out;
+}
+
 .carousel {
-  height: 650px;
+  max-height: 650px;
   overflow-y: hidden;
 }
 
