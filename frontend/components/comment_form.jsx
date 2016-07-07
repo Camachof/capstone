@@ -16,7 +16,10 @@ const CommentForm = React.createClass({
     };
   },
   componentDidMount(){
-    SessionStore.addListener(this._onChange);
+    this.sessionListener = SessionStore.addListener(this._onChange);
+  },
+  componentWillUnmount(){
+    this.sessionListener.remove();
   },
   _onChange(){
     this.setState({user_id: SessionStore.currentUser().id});
@@ -24,6 +27,7 @@ const CommentForm = React.createClass({
   _onSubmit(e){
     e.preventDefault();
     CommentActions.createComment(this.state);
+    this.setState({body: "", user_id: SessionStore.currentUser().id, project_id: this.props.projectId});
   },
   _onBody(e){
     this.setState({body: e.target.value});

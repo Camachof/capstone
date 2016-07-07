@@ -1,3 +1,3 @@
 json.array! @projects do |project|
-  json.extract!(project, :id, :title, :images, :author)
+  json.extract!(project, :id, :title, :images, :author, :video_url)
 end

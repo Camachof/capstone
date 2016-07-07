@@ -11,13 +11,21 @@ module.exports= {
   fetchProject(id){
     ProjectApiUtil.fetchProject(id, this.receiveProject);
   },
+  deleteProject(id){
+    ProjectApiUtil.deleteProject(id, this.deleteProjectStore);
+  },
+  updateProject(project, callback){
+    ProjectApiUtil.updateProject(project, (payload) => {
+      this.receiveProject(payload);
+      callback(payload);
+    });
+  },
   createProject(project, callback){
     ProjectApiUtil.createProject(project, (payload) => {
       this.receiveProject(payload);
       callback(payload);
     });
   },
-
   receiveAllProjects(payload){
     AppDispatcher.dispatch({
       actionType: ProjectConstants.PROJECTS_RECEIVED,
@@ -27,6 +35,12 @@ module.exports= {
   receiveProject(payload){
     AppDispatcher.dispatch({
       actionType: ProjectConstants.PROJECT_RECEIVED,
+      project: payload
+    });
+  },
+  deleteProjectStore(payload){
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.PROJECT_DELETED,
       project: payload
     });
   }

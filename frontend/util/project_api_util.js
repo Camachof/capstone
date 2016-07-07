@@ -30,6 +30,25 @@ const ProjectApiUtil = {
       }
     });
   },
+  deleteProject(id, callback){
+    $.ajax({
+      url: `/api/projects/${id}`,
+      method: 'DELETE',
+      success(response){
+        callback(response);
+      }
+    });
+  },
+  updateProject(project, callback){
+    $.ajax({
+      url: `/api/projects/${project.id}`,
+      method: 'PATCH',
+      data: {project: project},
+      success(response){
+        callback(response);
+      }
+    });
+  },
 };
 
 module.exports = ProjectApiUtil;

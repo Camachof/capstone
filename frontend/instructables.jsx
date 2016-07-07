@@ -29,6 +29,7 @@ const router = (
     <Route path="/" component={App} >
       <IndexRoute component={ProjectIndex} />
       <Route path="/project/:projectId" component={ProjectItem}/>
+        <Route path="/project/:projectId/edit" component={ProjectForm}/>
       <Route path="/form" component={ProjectForm} />
       <Route path="/signup" component={SignUpModal} />
       <Route path="/login" component={LoginModal} />

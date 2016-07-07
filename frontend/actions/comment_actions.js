@@ -7,4 +7,7 @@ module.exports= {
   createComment(comment, callback){
     CommentApiUtil.createComment(comment, ProjectActions.receiveProject);
   },
+  deleteComment(id, callback){
+    CommentApiUtil.deleteComment(id, ProjectActions.receiveProject);
+  },
 };

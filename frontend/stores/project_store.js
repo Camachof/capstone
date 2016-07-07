@@ -24,6 +24,10 @@ ProjectStore.addProject = function(project){
   _projects[project.id] = project;
 };
 
+ProjectStore.removeProject = function(id){
+  delete _projects[id];
+};
+
 ProjectStore.find = function(id){
   return _projects[id];
 };
@@ -36,6 +40,10 @@ ProjectStore.__onDispatch = function(payload){
       break;
     case ProjectConstants.PROJECT_RECEIVED:
       this.addProject(payload.project);
+      ProjectStore.__emitChange();
+      break;
+    case ProjectConstants.PROJECT_DELETED:
+      this.removeProject(payload.project.id);
       ProjectStore.__emitChange();
       break;
   }

@@ -12,7 +12,10 @@ const ProjectIndex = React.createClass({
     return {projects: ProjectStore.all()};
   },
   componentDidMount(){
-    ProjectStore.addListener(this._onChange);
+    this.projectListener = ProjectStore.addListener(this._onChange);
+  },
+  componentWillUnmount(){
+    this.projectListener.remove();
   },
   _onChange(){
     this.setState({projects: ProjectStore.all()});
@@ -27,7 +30,7 @@ const ProjectIndex = React.createClass({
   render(){
     const projects = this.state.projects.map( project => {
       return (
-        <div className="project_item">
+        <div className="project_item" key={project.id}>
           <a onClick={this._takeToProject}>
             <img value={project.id} className="project_item_image" src={project.images}></img>
           </a>
@@ -49,7 +52,5 @@ const ProjectIndex = React.createClass({
     );
   }
 });
-
-
 
 module.exports = ProjectIndex;

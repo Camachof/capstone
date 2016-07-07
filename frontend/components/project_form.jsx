@@ -1,6 +1,7 @@
 const React = require('react');
 const ProjectActions = require('../actions/project_actions');
 const UploadButton = require('./upload_button.jsx');
+const VideoForm = require('./video_form.jsx');
 const SessionStore = require('../stores/session_store.js');
 const ProjectStore = require('../stores/project_store.js');
 // bootstrap
@@ -15,9 +16,31 @@ const hashHistory = ReactRouter.hashHistory;
 const ProjectForm = React.createClass({
   getInitialState: function() {
     return {
-      title: "", body: "", images: [], disabled: true, user_id: SessionStore.currentUser().id
+      title: "", body: "",
+      images: [], disabled: true,
+      user_id: SessionStore.currentUser().id,
+      video_url: ""
     };
   },
+  componentDidMount(){
+    // this.projectListener = ProjectStore.addListener(this._onChange);
+    if(this.props.params.projectId !== undefined){
+      // ProjectActions.fetchProject(this.props.params.projectId);
+      this.setState(ProjectStore.find(this.props.params.projectId));
+    }
+
+  },
+  // componentWillUnmount(){
+  //   this.projectListener.remove();
+  // },
+  // _onChange(){
+  //   const toEdit = ProjectStore.find(this.props.params.projectId);
+  //   if (JSON.stringify(toEdit) !== '{}' && toEdit !== undefined){
+  //     this.setState(toEdit);
+  //   } else {
+  //     this.setState({});
+  //   }
+  // },
   uploadedCallback(image){
     this.setState({disabled: false});
     this.setState({images: image.url});
@@ -28,13 +51,36 @@ const ProjectForm = React.createClass({
       hashHistory.push(`/project/${project.id}`);
     });
   },
+  _updateProject(e){
+    e.preventDefault();
+    ProjectActions.updateProject(this.state, (project) => {
+      hashHistory.push(`/project/${this.props.params.projectId}`);
+    });
+  },
   onTitleChange(e){
     this.setState({title: e.target.value});
   },
   onBodyChange(e){
     this.setState({body: e.target.value});
   },
+  _onVideoCallback(url){
+    this.setState({video_url: url});
+  },
   render(){
+    let formButton;
+    const location = window.location.hash;
+    if(location.indexOf('edit') >= 0){
+      formButton =
+       <Button type="submit" onClick={this._updateProject}>
+        Update
+      </Button>;
+    } else {
+      formButton =
+        <Button disabled={this.state.disabled} type="submit" onClick={this._newProject}>
+          Submit
+        </Button>;
+    }
+
     return(
       <form>
 
@@ -57,10 +103,9 @@ const ProjectForm = React.createClass({
         </FormGroup>
 
         <UploadButton uploaded={this.uploadedCallback}/>
+        <VideoForm videoCallback={this._onVideoCallback}/>
 
-        <Button disabled={this.state.disabled} type="submit" onClick={this._newProject}>
-          Submit
-        </Button>
+        {formButton}
 
       </form>
     );

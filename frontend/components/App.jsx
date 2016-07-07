@@ -57,6 +57,9 @@ const App = React.createClass({
   _onSearch(){
     this.setState({searched: "searched"});
   },
+  _onHome(){
+    hashHistory.push("/");
+  },
   render(){
 
     return(
@@ -64,7 +67,7 @@ const App = React.createClass({
         <header>
           <div className="top_header" >
             <div>
-                <img alt="Instructables" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467308145/header-logo_yroad2.png" />
+                <a onClick={this._onHome}><img alt="Instructables" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467308145/header-logo_yroad2.png" /></a>
                 <a title="Explore" className="header_link" onClick={this._onExplore}>Explore</a>
                 <a title="Publish" className="header_link" onClick={this._onPublish}>Publish</a>
             </div>

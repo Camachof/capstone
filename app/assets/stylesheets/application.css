@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ .noVideoPlayer {
+  display: none;
+ }
+
 .item_comment {
 
  }

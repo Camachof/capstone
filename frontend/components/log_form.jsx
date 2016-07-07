@@ -17,8 +17,12 @@ const LogForm = React.createClass({
     };
   },
   componentDidMount(){
-    SessionStore.addListener(this._onChange);
-    ErrorStore.addListener(this._onError);
+    this.sessionListener = SessionStore.addListener(this._onChange);
+    this.errorListener = ErrorStore.addListener(this._onError);
+  },
+  componentWillUnmount(){
+    this.sessionListener.remove();
+    this.errorListener.remove();
   },
   _onError(){
     this.setState({ errors: ErrorStore.formErrors()});

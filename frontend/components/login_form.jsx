@@ -20,6 +20,10 @@ const LoginForm = React.createClass({
     SessionStore.addListener(this._onChange);
     ErrorStore.addListener(this._onError);
   },
+  componentWillUnmount(){
+    this.sessionListener.remove();
+    this.errorListener.remove();
+  },
   _onError(){
     this.setState({ errors: ErrorStore.formErrors('login')});
   },
