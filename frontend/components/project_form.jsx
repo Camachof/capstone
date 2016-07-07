@@ -82,6 +82,7 @@ const ProjectForm = React.createClass({
     }
 
     let showImage;
+    // need to add styling to make it look okay
     if(this.state.disabled === false){
       showImage =
         <img src={this.state.images}></img>;
@@ -90,12 +91,6 @@ const ProjectForm = React.createClass({
     }
 
     return(
-      // <div className="form_instructions">
-      //   <img src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467924047/footer-robot_fdq4nm.png"></img>
-      //   <div>
-      //     Come up with a tit
-      //   </div>
-      // </div>
 
       <div className="item_wrapper">
         <form className="item_project">

@@ -146,20 +146,25 @@
 }
 
 .title_input_text {
-  border-bottom: 5px solid white;
-  display:inline;
   font-size: 56px;
   font-family: 'helvetica';
   vertical-align: middle;
 }
 
 .title_search_bar {
-  display: inline;
-  height: 100px;
+  margin-left: 20px;
+  margin-top: 20px;
+  height: 80px;
 }
 
 .title_search {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.title_search h3 {
+
 }
 
 header {
