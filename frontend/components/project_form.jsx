@@ -81,33 +81,51 @@ const ProjectForm = React.createClass({
         </Button>;
     }
 
+    let showImage;
+    if(this.state.disabled === false){
+      showImage =
+        <img src={this.state.images}></img>;
+    } else {
+      showImage = "";
+    }
+
     return(
-      <form>
+      // <div className="form_instructions">
+      //   <img src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467924047/footer-robot_fdq4nm.png"></img>
+      //   <div>
+      //     Come up with a tit
+      //   </div>
+      // </div>
 
-        <FormGroup>
-          <FormControl
-            type="text"
-            value={this.state.title}
-            placeholder="Title"
-            onChange={this.onTitleChange}
-          />
-        </FormGroup>
+      <div className="item_wrapper">
+        <form className="item_project">
 
-        <FormGroup controlId="formControlsTextarea">
-          <FormControl
-            componentClass="textarea"
-            placeholder="Instructions"
-            value={this.state.body}
-            onChange={this.onBodyChange}
-          />
-        </FormGroup>
+          <FormGroup>
+            <FormControl
+              type="text"
+              value={this.state.title}
+              placeholder="Title"
+              onChange={this.onTitleChange}
+            />
+          </FormGroup>
 
-        <UploadButton uploaded={this.uploadedCallback}/>
-        <VideoForm videoCallback={this._onVideoCallback}/>
+          <FormGroup controlId="formControlsTextarea">
+            <FormControl
+              componentClass="textarea"
+              placeholder="Instructions"
+              value={this.state.body}
+              onChange={this.onBodyChange}
+            />
+          </FormGroup>
 
-        {formButton}
+          <UploadButton uploaded={this.uploadedCallback}/>
+          {showImage}
+          <VideoForm videoCallback={this._onVideoCallback}/>
 
-      </form>
+          {formButton}
+
+        </form>
+      </div>
     );
   }
 });

@@ -32,16 +32,18 @@ const SearchForm = React.createClass({
   render(){
     return(
       <div>
-        <Navbar.Form>
+        <Navbar.Form horizontal>
+          <label className="searchLabel" for="sb">let's make</label>
           <FormGroup>
             <FormControl
+              id="sb"
               type="text"
               placeholder="Search"
               value={this.state.value}
               onChange={this.handleChange}
             />
-          <button onClick={this._onSubmit} type="submit">Submit</button>
           </FormGroup>
+          <Button onClick={this._onSubmit} type="submit">Submit</Button>
         </Navbar.Form>
       </div>
     );

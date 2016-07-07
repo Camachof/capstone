@@ -5,6 +5,7 @@ const SearchForm = require('./search_form.jsx');
 const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
 const ProjectActions = require('../actions/project_actions');
+const Button = require('react-bootstrap').Button;
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -28,14 +29,17 @@ const App = React.createClass({
 
     if (Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
       return [
-        <div>
-          <LogModal />
+        <div className="top_header_right">
+          <LogModal name="Log In"/>
+          <LogModal name="Sign Up"/>
         </div>
       ];
     } else {
       return [
-        <h5>Hello {currentUser.username}!</h5>,
-        <a onClick={this._onLogout}>Logout</a>
+        <div className="top_header_right">
+          <h5>Hello {currentUser.username}!</h5>
+          <Button onClick={this._onLogout}>Logout</Button>
+        </div>
       ];
     }
   },
@@ -57,22 +61,20 @@ const App = React.createClass({
   _onSearch(){
     this.setState({searched: "searched"});
   },
-  _onHome(){
-    hashHistory.push("/");
-  },
+
   render(){
 
     return(
       <div className={this.state.searched}>
         <header>
           <div className="top_header" >
-            <div>
-                <a onClick={this._onHome}><img alt="Instructables" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467308145/header-logo_yroad2.png" /></a>
+            <div className="top_header_left">
+                <a className="logo" onClick={this._onExplore}><img alt="Instructables" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467308145/header-logo_yroad2.png" /></a>
+                <SearchForm removeCarousel={this._onSearch}/>
                 <a title="Explore" className="header_link" onClick={this._onExplore}>Explore</a>
                 <a title="Publish" className="header_link" onClick={this._onPublish}>Publish</a>
             </div>
             {this.state.greeting}
-            <SearchForm removeCarousel={this._onSearch}/>
           </div>
         </header>
         {this.props.children}

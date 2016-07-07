@@ -14,6 +14,33 @@
  *= require_self
  */
 
+ /*@font-face {
+    font-family: 'complete_in_himregular';
+    src: url('/assets/complete_in_him-webfont.woff2') format('woff2'),
+      url('/assets/complete_in_him-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+ }*/
+
+ .logo {
+  margin-top: 40px;
+  cursor: pointer;
+ }
+
+ .navbar-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ }
+
+ .searchLabel {
+  font-family: 'complete_in_himregular';
+  font-size: 20px;
+  font-weight: normal;
+  padding-right: 10px;
+  margin-top: 10px;
+ }
+
  .noVideoPlayer {
   display: none;
  }
@@ -68,6 +95,7 @@
   border-radius: 9px;
   background-color: #fff;
   border: 1px solid rgba(119,130,135,.4);
+  min-height: 500px;
 }
 
 .item_header {
@@ -81,6 +109,7 @@
   justify-content: flex-start;
   align-items: flex-end;
 }
+
 
 /*.item_header h1 h3 {
   margin: 0 !important;
@@ -100,6 +129,39 @@
   overflow-y: hidden;
 }
 
+.carousel_input {
+  background: transparent;
+  border: 0;
+}
+
+.carousel-caption {
+    top:200px;
+}
+
+.carousel-caption h3 {
+  font-family: 'complete_in_himregular';
+  font-size: 100px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  letter-spacing: 4px;
+}
+
+.title_input_text {
+  border-bottom: 5px solid white;
+  display:inline;
+  font-size: 56px;
+  font-family: 'helvetica';
+  vertical-align: middle;
+}
+
+.title_search_bar {
+  display: inline;
+  height: 100px;
+}
+
+.title_search {
+  display: flex;
+}
+
 header {
   width: 100%;
   min-height: 99px;
@@ -115,18 +177,33 @@ header {
  height: 61px;
 }
 
+.top_header_left {
+ display: flex;
+ justify-content: space-around;
+ flex-direction: row;
+ align-items: center;
+}
+
+.top_header_right {
+ display: flex;
+ justify-content: space-around;
+ flex-direction: row;
+ align-items: center;
+}
+
+.top_header_right h5 {
+ margin-right: 10px;
+}
+
 .header_link {
   background-color: transparent;
-  border-color: #dedede;
   color: #333;
   padding: 6px 12px;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
-  border: 1px solid transparent;
+  border: 1px solid #dedede;
   border-radius: 4px;
-  align-content:  center;
+  margin-left: 15px;
+  cursor: pointer;
+  text-decoration: none;
  }
 
 .projects_index {

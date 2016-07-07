@@ -23,11 +23,11 @@ const LogModal = React.createClass({
   render() {
 
     return (
-      <a
+      <Button
           className="trial"
           onClick={this.open}
         >
-        Log In or Sign Up!
+        {this.props.name}
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
           </Modal.Header>
@@ -35,7 +35,7 @@ const LogModal = React.createClass({
             <LogForm closeModal={this.close} />
           </Modal.Body>
         </Modal>
-      </a>
+      </Button>
     );
   }
 });

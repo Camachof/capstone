@@ -3,7 +3,7 @@ class Api::ProjectsController < ApplicationController
   def index
     # make it efficient
     if params[:filter]
-      @projects = Project.includes(:author, :comments).where("projects.title ILIKE '%#{params[:filter]}%'")
+      @projects = Project.includes(:author, :comments).where("projects.body ILIKE '%#{params[:filter]}%' or projects.title ILIKE '%#{params[:filter]}%'")
     else
       @projects = Project.includes(:author, :comments)
     end
