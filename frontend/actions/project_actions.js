@@ -2,6 +2,7 @@ const AppDispatcher = require('../dispatcher/dispatcher');
 const ProjectConstants = require('../constants/project_constants.js');
 const ProjectApiUtil = require('../util/project_api_util.js');
 const ReactRouter = require('react-router');
+const ErrorActions = require('./error_actions');
 const hashHistory = ReactRouter.hashHistory;
 
 module.exports= {
@@ -24,7 +25,7 @@ module.exports= {
     ProjectApiUtil.createProject(project, (payload) => {
       this.receiveProject(payload);
       callback(payload);
-    });
+    }, ErrorActions.setErrors);
   },
   receiveAllProjects(payload){
     AppDispatcher.dispatch({

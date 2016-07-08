@@ -39,6 +39,7 @@
   font-weight: normal;
   padding-right: 10px;
   margin-top: 10px;
+  width: 100%;
  }
 
  .noVideoPlayer {
@@ -96,6 +97,7 @@
   background-color: #fff;
   border: 1px solid rgba(119,130,135,.4);
   min-height: 500px;
+  font-size: 17px;
 }
 
 .item_header {
@@ -163,8 +165,13 @@
   align-items: flex-start;
 }
 
-.title_search h3 {
-
+.title_input_text {
+  background-image: url(http://res.cloudinary.com/doilr7vvv/image/upload/v1467928203/makeitsearch-bg_ofeog6.png);
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  width: 600px;
+  text-align: left;
+  margin-left: 50px;
 }
 
 header {
@@ -272,4 +279,68 @@ header {
   font-size: 18px;
   padding: 0;
   margin-left: 5%;
+}
+
+.item_body {
+  white-space: pre-line;
+  margin: 20px;
+  /*height: auto;*/
+  font-size: 17px;
+}
+
+.comment_textarea {
+  min-height: 105px;
+  max-height: 600px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.comment_wrapper {
+  padding: 5px;
+  background: #f6f6f6;
+  border: 1px solid #e0e0e0;
+  width: 60%;
+}
+
+.comment_submit_button {
+  /*float: right;*/
+  position: relative;
+}
+
+.project_form_title {
+  margin: 5%;
+  width: 50% !important;
+}
+.project_form_body {
+  margin: 5%;
+  width: 90% !important;
+}
+
+.form-control {
+  font-size: 17px !important;
+}
+
+.project_form_body_input {
+  min-height: 400px;
+}
+
+.image_preview {
+  width: 171px;
+  height: 180px;
+  margin: 5%;
+  border: 1px solid #bfbfbf;
+}
+
+.form_image_upload {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.image_upload_button {
+  margin: 5%;
+}
+
+.upload_video_button {
+  margin: 5%;
 }

@@ -26,7 +26,7 @@ const VideoForm = React.createClass({
   render(){
     return(
       <Button
-          className="trial"
+          className="upload_video_button"
           onClick={this.open}
         >
         Upload Video

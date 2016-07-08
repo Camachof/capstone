@@ -20,13 +20,16 @@ const ProjectApiUtil = {
       }
     });
   },
-  createProject(project, callback){
+  createProject(project, callback, error){
     $.ajax({
       url: `/api/projects/`,
       method: 'POST',
       data: {project: project},
       success(response){
         callback(response);
+      },
+      error(message) {
+        error("no form", message.responseJSON);
       }
     });
   },

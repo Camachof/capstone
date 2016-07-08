@@ -14,12 +14,11 @@ const SlideShow = React.createClass({
 
   render() {
     return (
-      <Carousel interval={4000} onSelect={this.onChange} >
+      <Carousel interval={4000000} onSelect={this.onChange} >
         <Carousel.Item>
           <Carousel.Caption className="title_search">
-            <h3>Let's Make</h3>
+            <h3 className="title_input_presearch">Let's Make</h3>
             <div>
-              <img className="title_search_bar" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467928203/makeitsearch-bg_ofeog6.png" />
               <h3 className="title_input_text">wearables</h3>
             </div>
           </Carousel.Caption>

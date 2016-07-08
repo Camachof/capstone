@@ -105,7 +105,7 @@ const ProjectItem = React.createClass({
             </div>
             <iframe className={videoPlayer} width="560" height="315" src={url} frameborder="0" allowfullscreen></iframe>
             <div>
-              <p>{this.state.project.body}</p>
+              <p className="item_body" >{this.state.project.body}</p>
             </div>
           </div>
             {comments}

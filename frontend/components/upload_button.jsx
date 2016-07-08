@@ -1,4 +1,5 @@
 const React = require("react");
+const Button = require('react-bootstrap').Button;
 
 var UploadButton = React.createClass({
   upload: function (e) {
@@ -11,9 +12,7 @@ var UploadButton = React.createClass({
   },
   render: function () {
     return (
-      <div className="upload-form">
-        <button onClick={this.upload}>Upload new image!</button>
-      </div>
+      <Button className="image_upload_button" onClick={this.upload}>Upload new image!</Button>
     );
   }
 });

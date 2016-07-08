@@ -1,7 +1,7 @@
 const SessionApiUtil = require('../util/session_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
 const SessionConstants = require('../constants/session_constants');
-const ErrorActions = require('../actions/error_actions');
+const ErrorActions = require('./error_actions');
 
 const SessionActions = {
   signup(user){

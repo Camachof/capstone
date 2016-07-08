@@ -4,6 +4,7 @@ const UploadButton = require('./upload_button.jsx');
 const VideoForm = require('./video_form.jsx');
 const SessionStore = require('../stores/session_store.js');
 const ProjectStore = require('../stores/project_store.js');
+const ErrorStore = require('../stores/error_store.js');
 // bootstrap
 const FormGroup = require('react-bootstrap').FormGroup;
 const ControlLabel = require('react-bootstrap').ControlLabel;
@@ -19,28 +20,18 @@ const ProjectForm = React.createClass({
       title: "", body: "",
       images: [], disabled: true,
       user_id: SessionStore.currentUser().id,
-      video_url: ""
+      video_url: "", errors: {}
     };
   },
   componentDidMount(){
-    // this.projectListener = ProjectStore.addListener(this._onChange);
+    this.errorListener = ErrorStore.addListener(this._onErrorChange);
     if(this.props.params.projectId !== undefined){
-      // ProjectActions.fetchProject(this.props.params.projectId);
       this.setState(ProjectStore.find(this.props.params.projectId));
     }
-
   },
-  // componentWillUnmount(){
-  //   this.projectListener.remove();
-  // },
-  // _onChange(){
-  //   const toEdit = ProjectStore.find(this.props.params.projectId);
-  //   if (JSON.stringify(toEdit) !== '{}' && toEdit !== undefined){
-  //     this.setState(toEdit);
-  //   } else {
-  //     this.setState({});
-  //   }
-  // },
+  componentWillUnmount(){
+    this.errorListener.remove();
+  },
   uploadedCallback(image){
     this.setState({disabled: false});
     this.setState({images: image.url});
@@ -66,6 +57,15 @@ const ProjectForm = React.createClass({
   _onVideoCallback(url){
     this.setState({video_url: url});
   },
+  _addStep(){
+    const bodyIndex = this.state.body.length;
+    this.state.body[bodyIndex] = "";
+
+    this.setState({step: this.state.step + 1, body: this.state.body});
+  },
+  _onErrorChange(){
+    this.setState({errors: ErrorStore.formErrors()});
+  },
   render(){
     let formButton;
     const location = window.location.hash;
@@ -85,17 +85,34 @@ const ProjectForm = React.createClass({
     // need to add styling to make it look okay
     if(this.state.disabled === false){
       showImage =
-        <img src={this.state.images}></img>;
+        <img className="image_preview" src={this.state.images}></img>;
     } else {
       showImage = "";
     }
 
-    return(
+    const errors = [];
+    for (var i in this.state.errors) {
+      if (this.state.errors.hasOwnProperty(i)) {
+        if(i === "user_id"){
+          errors.push("Must be logged in!");
+        } else if (i === "title" || i === "body") {
+          errors.push("Fields can't be empty!");
+        }
+      }
+    }
+    this.state.errors = {};
 
+    if(this.state.video_url.indexOf("youtube")){
+      const youtubeId = this.state.video_url.split("=")[1];
+      this.videoThubnail = <img className="image_preview" src={"http://img.youtube.com/vi/" + youtubeId + "/default.jpg"}></img>;
+    }
+
+    return(
       <div className="item_wrapper">
         <form className="item_project">
 
-          <FormGroup>
+          <FormGroup className="project_form_title">
+            <ControlLabel>Write a descriptibe title for your project</ControlLabel>
             <FormControl
               type="text"
               value={this.state.title}
@@ -104,20 +121,27 @@ const ProjectForm = React.createClass({
             />
           </FormGroup>
 
-          <FormGroup controlId="formControlsTextarea">
+          <FormGroup className="project_form_body">
+            <ControlLabel>List all steps</ControlLabel>
             <FormControl
               componentClass="textarea"
               placeholder="Instructions"
               value={this.state.body}
               onChange={this.onBodyChange}
+              className="project_form_body_input"
             />
           </FormGroup>
 
-          <UploadButton uploaded={this.uploadedCallback}/>
-          {showImage}
+          <div className="form_image_upload">
+            {showImage}
+            <UploadButton uploaded={this.uploadedCallback}/>
+          </div>
+
           <VideoForm videoCallback={this._onVideoCallback}/>
+          {this.videoThubnail}
 
           {formButton}
+          {errors[0]}
 
         </form>
       </div>

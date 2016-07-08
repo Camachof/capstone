@@ -9,6 +9,7 @@ const FormGroup = require('react-bootstrap').FormGroup;
 const ControlLabel = require('react-bootstrap').ControlLabel;
 const FormControl = require('react-bootstrap').FormControl;
 const Button = require('react-bootstrap').Button;
+const HelpBlock = require('react-bootstrap').HelpBlock;
 
 const LogForm = React.createClass({
   getInitialState: function() {
@@ -28,13 +29,13 @@ const LogForm = React.createClass({
     this.setState({ errors: ErrorStore.formErrors()});
   },
   _onChange(){
-    // if (SessionStore.currentUser()){
+    if (SessionStore.currentUser()){
       this.props.closeModal();
-      // let regex = /\/(.*?)\?/;
-      // let strToMatch = window.location.hash;
-      // let matched = regex.exec(strToMatch)[1];
-      // hashHistory.push(matched);
-    // }
+      let regex = /\/(.*?)\?/;
+      let strToMatch = window.location.hash;
+      let matched = regex.exec(strToMatch)[1];
+      hashHistory.push(matched);
+    }
   },
   _onName(e){
     this.setState({username: e.target.value});
@@ -59,7 +60,7 @@ const LogForm = React.createClass({
     const errors = [];
     for (var i in this.state.errors) {
       if (this.state.errors.hasOwnProperty(i)) {
-        errors.push(this.state.errors[i]);
+        errors.push(i + " " + this.state.errors[i]);
       }
     }
     // hacky way to remove error from greeting. consider fixing.
@@ -85,6 +86,9 @@ const LogForm = React.createClass({
             onChange={this._onPass}
           />
         </FormGroup>
+
+        <FormControl.Feedback />
+        <HelpBlock>{errors}</HelpBlock>
 
         <Button type="submit" onClick={this._onSignUp}>
           Sign Up!
