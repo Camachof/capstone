@@ -148,8 +148,8 @@
 }
 
 .title_input_text {
-  font-size: 56px;
-  font-family: 'helvetica';
+  font-size: 70px !important;
+  font-family: 'helvetica' !important;
   vertical-align: middle;
 }
 
@@ -343,4 +343,22 @@ header {
 
 .upload_video_button {
   margin: 5%;
+}
+
+.form_submit_button {
+  margin: 5%;
+  display: block !important;
+}
+
+.carousel-control.left {
+    opacity: 0;
+}
+
+.carousel-control.right {
+  opacity: 0;
+}
+
+.error_label {
+  display: block;
+  color:red;
 }

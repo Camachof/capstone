@@ -25,12 +25,14 @@ const ProjectForm = React.createClass({
   },
   componentDidMount(){
     this.errorListener = ErrorStore.addListener(this._onErrorChange);
+    this.sessionListener = SessionStore.addListener(this._onUserChange);
     if(this.props.params.projectId !== undefined){
       this.setState(ProjectStore.find(this.props.params.projectId));
     }
   },
   componentWillUnmount(){
     this.errorListener.remove();
+    this.sessionListener.remove();
   },
   uploadedCallback(image){
     this.setState({disabled: false});
@@ -57,26 +59,23 @@ const ProjectForm = React.createClass({
   _onVideoCallback(url){
     this.setState({video_url: url});
   },
-  _addStep(){
-    const bodyIndex = this.state.body.length;
-    this.state.body[bodyIndex] = "";
-
-    this.setState({step: this.state.step + 1, body: this.state.body});
-  },
   _onErrorChange(){
     this.setState({errors: ErrorStore.formErrors()});
+  },
+  _onUserChange(){
+    this.setState({user_id: SessionStore.currentUser().id});
   },
   render(){
     let formButton;
     const location = window.location.hash;
     if(location.indexOf('edit') >= 0){
       formButton =
-       <Button type="submit" onClick={this._updateProject}>
+       <Button className="form_submit_button" type="submit" onClick={this._updateProject}>
         Update
       </Button>;
     } else {
       formButton =
-        <Button disabled={this.state.disabled} type="submit" onClick={this._newProject}>
+        <Button className="form_submit_button" disabled={this.state.disabled} type="submit" onClick={this._newProject}>
           Submit
         </Button>;
     }
@@ -90,21 +89,22 @@ const ProjectForm = React.createClass({
       showImage = "";
     }
 
-    const errors = [];
     for (var i in this.state.errors) {
       if (this.state.errors.hasOwnProperty(i)) {
-        if(i === "user_id"){
-          errors.push("Must be logged in!");
-        } else if (i === "title" || i === "body") {
-          errors.push("Fields can't be empty!");
+        if(i === "title" || i === "body" || i === "image_url") {
+          this.currentError = <label className="error_label">Fields can't be blank!</label>;
+        } else {
+          this.currentError = "";
         }
       }
     }
     this.state.errors = {};
 
-    if(this.state.video_url.indexOf("youtube")){
+    if(this.state.video_url.indexOf("youtube") !== -1){
       const youtubeId = this.state.video_url.split("=")[1];
-      this.videoThubnail = <img className="image_preview" src={"http://img.youtube.com/vi/" + youtubeId + "/default.jpg"}></img>;
+      this.videoThumbnail = <img className="image_preview" src={"http://img.youtube.com/vi/" + youtubeId + "/default.jpg"}></img>;
+    } else {
+      this.videoThumbnail = "";
     }
 
     return(
@@ -112,6 +112,8 @@ const ProjectForm = React.createClass({
         <form className="item_project">
 
           <FormGroup className="project_form_title">
+            {this.currentError}
+
             <ControlLabel>Write a descriptibe title for your project</ControlLabel>
             <FormControl
               type="text"
@@ -137,11 +139,10 @@ const ProjectForm = React.createClass({
             <UploadButton uploaded={this.uploadedCallback}/>
           </div>
 
+          {this.videoThumbnail}
           <VideoForm videoCallback={this._onVideoCallback}/>
-          {this.videoThubnail}
 
           {formButton}
-          {errors[0]}
 
         </form>
       </div>

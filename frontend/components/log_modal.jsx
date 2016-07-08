@@ -9,7 +9,14 @@ const SessionStore = require('../stores/session_store.js');
 const LogModal = React.createClass({
 
   getInitialState() {
-    return { showModal: false };
+      return { showModal: false };
+  },
+
+  componentWillReceiveProps(){
+    const currentUser = SessionStore.currentUser();
+    if((Object.keys(currentUser).length === 0 && currentUser.constructor === Object) && window.location.hash.indexOf("form") !== -1){
+      this.open();
+    }
   },
 
   close() {

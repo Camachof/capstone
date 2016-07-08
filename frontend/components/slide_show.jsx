@@ -14,7 +14,7 @@ const SlideShow = React.createClass({
 
   render() {
     return (
-      <Carousel interval={4000000} onSelect={this.onChange} >
+      <Carousel interval={4000} onSelect={this.onChange} >
         <Carousel.Item>
           <Carousel.Caption className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
@@ -25,26 +25,38 @@ const SlideShow = React.createClass({
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467901716/F1WEHY8IQ0TVSI2_l6uvte.jpg" />
         </Carousel.Item>
         <Carousel.Item>
-          <Carousel.Caption>
-            <h3>Let's Make renewable energy</h3>
+          <Carousel.Caption className="title_search">
+            <h3 className="title_input_presearch">Let's Make</h3>
+            <div>
+              <h3 className="title_input_text">energy</h3>
+            </div>
           </Carousel.Caption>
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467901800/F4V02QUI2Q1IZP5_ljjmkk.jpg" />
         </Carousel.Item>
         <Carousel.Item>
-          <Carousel.Caption>
-            <h3>Let's Make space</h3>
+          <Carousel.Caption className="title_search">
+            <h3 className="title_input_presearch">Let's Make</h3>
+            <div>
+              <h3 className="title_input_text">space</h3>
+            </div>
           </Carousel.Caption>
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467580960/F7YJBD0IPEIICRW_nxrt1e.jpg" />
         </Carousel.Item>
         <Carousel.Item>
-          <Carousel.Caption>
-            <h3>Let's Make homebrew</h3>
+          <Carousel.Caption className="title_search">
+            <h3 className="title_input_presearch">Let's Make</h3>
+            <div>
+              <h3 className="title_input_text">homebrew</h3>
+            </div>
           </Carousel.Caption>
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467903076/FYIFMIBIP74P2SE_nfpanj.jpg" />
         </Carousel.Item>
         <Carousel.Item>
-          <Carousel.Caption>
-            <h3>Let's Make rainbows</h3>
+          <Carousel.Caption className="title_search">
+            <h3 className="title_input_presearch">Let's Make</h3>
+            <div>
+              <h3 className="title_input_text">rainbows</h3>
+            </div>
           </Carousel.Caption>
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467901864/homepage-Rainbow-Roller_pght0c.jpg" />
         </Carousel.Item>

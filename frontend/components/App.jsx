@@ -31,7 +31,6 @@ const App = React.createClass({
       return [
         <div className="top_header_right">
           <LogModal name="Log In"/>
-          <LogModal name="Sign Up"/>
         </div>
       ];
     } else {
