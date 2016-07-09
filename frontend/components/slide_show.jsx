@@ -2,19 +2,9 @@ const React = require('react');
 const Carousel = require('react-bootstrap').Carousel;
 
 const SlideShow = React.createClass({
-  getInitialState() {
-    return {
-      titles: ["wearables", "renewable energy", "space", "homebrew", "rainbows"]
-    };
-  },
-
-  onChange(){
-    console.log("changed");
-  },
-
   render() {
     return (
-      <Carousel interval={4000} onSelect={this.onChange} >
+      <Carousel interval={4000} >
         <Carousel.Item>
           <Carousel.Caption className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
@@ -64,8 +54,5 @@ const SlideShow = React.createClass({
     );
   }
 });
-
-// <h3>Let's Make <div className="title_input_text">wearables</div>
-// </h3>
 
 module.exports = SlideShow;

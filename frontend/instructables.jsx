@@ -16,10 +16,10 @@ const LogModal = require('./components/log_form.jsx');
 const ProjectItem = require('./components/project_item.jsx');
 const ProjectForm = require('./components/project_form.jsx');
 // Testing
-const SessionApiUtil = require('./util/session_api_util.js');
+const ProjectApiUtil = require('./util/project_api_util.js');
 const SessionActions = require('./actions/session_actions.js');
 const SessionStore = require('./stores/session_store.js');
-window.SessionStore = SessionStore;
+window.ProjectApiUtil = ProjectApiUtil;
 
 const router = (
   <Router history={hashHistory} >
@@ -32,17 +32,6 @@ const router = (
   </Router>
 );
 
-
-// function checkedLoggedin(nextState, replace, callback){
-//   debugger;
-//   const currentUser = SessionStore.currentUser();
-//   if (Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
-//     replace({
-//       pathname: '/log',
-//       state: { nextPathname: nextState.location.pathname }
-//     });
-//   }
-// }
 
 document.addEventListener("DOMContentLoaded", function(){
   SessionActions.receiveCurrentUser(window.currentUser);

@@ -15,13 +15,18 @@ const ProjectItem = React.createClass({
   },
   componentDidMount(){
     this.projectListener = ProjectStore.addListener(this._onChange);
+    this.sessionListener = SessionStore.addListener(this._onLogIn);
     ProjectActions.fetchProject(this.props.params.projectId);
   },
   componentWillUnmount(){
     this.projectListener.remove();
+    this.sessionListener.remove();
   },
   _onChange(){
     this.setState({project: ProjectStore.find(this.props.params.projectId)});
+  },
+  _onLogIn(){
+    this.forceUpdate();
   },
   _onDelete(){
     ProjectActions.deleteProject(this.props.params.projectId);
@@ -36,7 +41,7 @@ const ProjectItem = React.createClass({
   },
   deleteButtonLogic(comment){
     if(comment.user_id === this.state.project.author || comment.user_id === SessionStore.currentUser().id){
-      return <button className="item_comment_delete" value={comment.id} onClick={this._onDeleteComment}>Delete Comment</button>;
+      return <button className="item_comment_delete" value={comment.id} onClick={this._onDeleteComment}>Delete</button>;
     } else {
       return "";
     }
@@ -51,6 +56,7 @@ const ProjectItem = React.createClass({
 
     const comments = this.state.project.comments ? this.state.project.comments.map( comment => {
       return <div className="item_comments_wrapper" key={comment.id}>
+                <h3 className="item_comment_author" >{comment.username}</h3>
                 <h3 className="item_comment" >{comment.body}</h3>
                 {this.deleteButtonLogic(comment)}
             </div>;
@@ -103,13 +109,13 @@ const ProjectItem = React.createClass({
             <div className="item_image_wrapper">
               <img className="item_image" src={this.state.project.images}></img>
             </div>
-            <iframe className={videoPlayer} width="560" height="315" src={url} frameborder="0" allowfullscreen></iframe>
             <div>
               <p className="item_body" >{this.state.project.body}</p>
             </div>
           </div>
-            {comments}
+          <iframe id='video_player' className={videoPlayer} width="560" height="315" src={url} frameborder="0" allowfullscreen></iframe>
           <CommentForm projectId={this.props.params.projectId}/>
+          {comments}
         </div>
       </div>
     );

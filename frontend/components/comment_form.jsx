@@ -15,27 +15,30 @@ const CommentForm = React.createClass({
   getInitialState: function() {
     return {
       body: "", user_id: SessionStore.currentUser().id,
-      project_id: this.props.projectId, errors: []
+      project_id: this.props.projectId,
+      username: SessionStore.currentUser().username,
+      error: ""
     };
   },
   componentDidMount(){
     this.sessionListener = SessionStore.addListener(this._onChange);
-    this.errorListener = ErrorStore.addListener(this._onErrorChange);
   },
   componentWillUnmount(){
     this.sessionListener.remove();
-    this.errorListener.remove();
   },
   _onChange(){
-    this.setState({user_id: SessionStore.currentUser().id});
-  },
-  _onErrorChange(){
-    this.setState({errors: ErrorStore.formErrors()});
+    this.setState({user_id: SessionStore.currentUser().id, username: SessionStore.currentUser().username, error: ""});
   },
   _onSubmit(e){
     e.preventDefault();
-    CommentActions.createComment(this.state);
-    this.setState({body: "", user_id: SessionStore.currentUser().id, project_id: this.props.projectId});
+    let currentUser = SessionStore.currentUser();
+    if(Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
+      this.setState({error: <label>Must be logged in!</label>});
+    } else {
+      debugger;
+      CommentActions.createComment(this.state);
+      this.setState({body: "", user_id: SessionStore.currentUser().id, project_id: this.props.projectId, error:""});
+    }
   },
   _onBody(e){
     this.setState({body: e.target.value});
@@ -57,7 +60,7 @@ const CommentForm = React.createClass({
           </Button>
         </FormGroup>
 
-        {this.state.errors[0]}
+        {this.state.error}
 
       </Form>
     );
