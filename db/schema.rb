@@ -11,26 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708184513) do
+ActiveRecord::Schema.define(version: 20160710013624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text    "body",       null: false
-    t.integer "user_id",    null: false
-    t.integer "project_id"
-    t.string  "username"
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
+    t.integer  "project_id"
+    t.string   "username"
+    t.datetime "created_at"
   end
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string  "title",     null: false
-    t.text    "body",      null: false
-    t.integer "user_id",   null: false
-    t.string  "images"
-    t.string  "video_url"
+    t.string   "title",      null: false
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
+    t.string   "images"
+    t.string   "video_url"
+    t.datetime "created_at"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree

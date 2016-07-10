@@ -26,6 +26,7 @@ const ProjectItem = React.createClass({
   _onChange(){
     this.setState({project: ProjectStore.find(this.props.params.projectId)});
   },
+
   _onLogIn(){
     this.forceUpdate();
   },
@@ -57,7 +58,10 @@ const ProjectItem = React.createClass({
 
     const comments = this.state.project.comments ? this.state.project.comments.map( comment => {
       return <div className="item_comments_wrapper" key={comment.id}>
-                <h3 className="item_comment_author" >{comment.username}</h3>
+                <div>
+                  <h3 className="item_comment_author" >{comment.username}</h3>
+                  <h3 className="item_comment_author" >{comment.created_at ? new Date(comment.created_at).toLocaleString() : ""}</h3>
+                </div>
                 <h3 className="item_comment" >{comment.body}</h3>
                 {this.deleteButtonLogic(comment)}
             </div>;
@@ -102,8 +106,11 @@ const ProjectItem = React.createClass({
               <p>by&nbsp;</p>
               {author}
             </div>
-            {deleteButton}
-            {updateButton}
+            <div className="item_subheader">
+              {deleteButton}
+              {updateButton}
+              <p>Posted: {this.state.project.date}</p>
+            </div>
           </div>
           <div className="item_body_wrapper">
             <div className="item_image_wrapper">
