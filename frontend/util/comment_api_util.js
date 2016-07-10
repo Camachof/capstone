@@ -1,15 +1,5 @@
 "use strict";
 
-$.ajax({
-  url: `https://devru-instructables.p.mashape.com/json-api/showInstructable`,
-  method: 'GET',
-  data: {header:"xGHZrdqoyDmshHdoGrK7yQnroM7jp1TzsUFjsndFUXYRtjjXs3"},
-  success(){
-    console.log("yesss");
-  }
-});
-
-
 const CommentApiUtil = {
   createComment(comment, callback){
     $.ajax({

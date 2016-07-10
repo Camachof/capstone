@@ -25,6 +25,7 @@ const SearchForm = React.createClass({
   },
   _onSubmit(e){
     e.preventDefault();
+    hashHistory.push('/');
     this.setState({value: ""});
     this.props.removeCarousel();
     ProjectActions.fetchAllProjects(this.state.value);
@@ -32,19 +33,20 @@ const SearchForm = React.createClass({
   render(){
     return(
       <div>
-        <Navbar.Form horizontal>
+        <form onSubmit={this._onSubmit} className="comment_form">
           <label className="searchLabel" for="sb">let's make</label>
           <FormGroup>
             <FormControl
               id="sb"
+              className="search_bar"
               type="text"
               placeholder="Search"
               value={this.state.value}
               onChange={this.handleChange}
             />
           </FormGroup>
-          <Button onClick={this._onSubmit} type="submit">Submit</Button>
-        </Navbar.Form>
+          <Button type="submit" onClick={this._onSubmit}>Submit</Button>
+        </form>
       </div>
     );
   }

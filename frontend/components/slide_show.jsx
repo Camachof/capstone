@@ -5,7 +5,7 @@ const SlideShow = React.createClass({
   render() {
     return (
       <Carousel interval={4000} >
-        <Carousel.Item>
+        <Carousel.Item >
           <Carousel.Caption className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
             <div>
@@ -14,7 +14,7 @@ const SlideShow = React.createClass({
           </Carousel.Caption>
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467901716/F1WEHY8IQ0TVSI2_l6uvte.jpg" />
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item >
           <Carousel.Caption className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
             <div>
@@ -23,7 +23,7 @@ const SlideShow = React.createClass({
           </Carousel.Caption>
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467901800/F4V02QUI2Q1IZP5_ljjmkk.jpg" />
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item >
           <Carousel.Caption className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
             <div>
@@ -32,7 +32,7 @@ const SlideShow = React.createClass({
           </Carousel.Caption>
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467580960/F7YJBD0IPEIICRW_nxrt1e.jpg" />
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item >
           <Carousel.Caption className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
             <div>
@@ -41,7 +41,7 @@ const SlideShow = React.createClass({
           </Carousel.Caption>
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467903076/FYIFMIBIP74P2SE_nfpanj.jpg" />
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item >
           <Carousel.Caption className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
             <div>

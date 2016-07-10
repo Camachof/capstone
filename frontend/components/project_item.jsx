@@ -6,6 +6,7 @@ const CommentForm = require('./comment_form.jsx');
 const SessionStore = require('../stores/session_store.js');
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
+const Image = require('react-bootstrap').Image;
 
 const ProjectItem = React.createClass({
   getInitialState: function() {
@@ -101,13 +102,12 @@ const ProjectItem = React.createClass({
               <p>by&nbsp;</p>
               {author}
             </div>
-            <button className="item_header_button">Download</button>
             {deleteButton}
             {updateButton}
           </div>
           <div className="item_body_wrapper">
             <div className="item_image_wrapper">
-              <img className="item_image" src={this.state.project.images}></img>
+              <Image className="item_image" src={this.state.project.images} responsive></Image>
             </div>
             <div>
               <p className="item_body" >{this.state.project.body}</p>

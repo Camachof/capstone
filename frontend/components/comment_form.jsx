@@ -35,7 +35,6 @@ const CommentForm = React.createClass({
     if(Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
       this.setState({error: <label>Must be logged in!</label>});
     } else {
-      debugger;
       CommentActions.createComment(this.state);
       this.setState({body: "", user_id: SessionStore.currentUser().id, project_id: this.props.projectId, error:""});
     }
@@ -45,24 +44,24 @@ const CommentForm = React.createClass({
   },
   render(){
     return(
-      <Form>
+      <form>
 
         <FormGroup className="comment_wrapper">
           <FormControl
-            type="text"
+            componentClass="textarea"
             value={this.state.body}
             placeholder="Comment"
             onChange={this._onBody}
-            className="comment_textarea"
-          />
-          <Button type="submit" onClick={this._onSubmit} className="comment_submit_button">
+            className="comment_textarea"/>
+
+        <Button type="submit" onClick={this._onSubmit} className="comment_submit_button">
             Submit
           </Button>
         </FormGroup>
 
         {this.state.error}
 
-      </Form>
+      </form>
     );
   }
 });

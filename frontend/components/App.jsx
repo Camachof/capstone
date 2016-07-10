@@ -28,18 +28,18 @@ const App = React.createClass({
     let greeting;
 
     if (Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
-      return [
+      return (
         <div className="top_header_right">
-          <LogModal name="Log In"/>
+          <LogModal name="Log In or Sign Up"/>
         </div>
-      ];
+      );
     } else {
-      return [
+      return(
         <div className="top_header_right">
           <h5>Hello {currentUser.username}!</h5>
           <Button onClick={this._onLogout}>Logout</Button>
         </div>
-      ];
+      );
     }
   },
   _onLogout(e){
@@ -77,6 +77,14 @@ const App = React.createClass({
           </div>
         </header>
         {this.props.children}
+        <footer>
+          <a href="https://github.com/Camachof">
+            <img src="http://res.cloudinary.com/doilr7vvv/image/upload/v1468102800/GitHub-Mark-Light-120px-plus_tr7xmn.png"></img>
+          </a>
+          <a href="https://www.linkedin.com/in/camachomartin">
+            <img src="http://res.cloudinary.com/doilr7vvv/image/upload/v1468103050/In-White-121px-TM_oegdbq.png"></img>
+          </a>
+        </footer>
       </div>
     );
   }

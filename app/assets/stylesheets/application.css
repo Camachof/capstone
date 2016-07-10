@@ -25,6 +25,7 @@
  .logo {
   margin-top: 40px;
   cursor: pointer;
+  margin-right: 6%;
  }
 
  .navbar-form {
@@ -39,7 +40,7 @@
   font-weight: normal;
   padding-right: 10px;
   margin-top: 10px;
-  width: 100%;
+  min-width: 80px;
  }
 
  .noVideoPlayer {
@@ -207,6 +208,7 @@ header {
  justify-content: space-around;
  flex-direction: row;
  align-items: center;
+ padding-right: 24%;
 }
 
 .top_header_right {
@@ -236,6 +238,7 @@ header {
   justify-content: center;
   flex-direction: row;
   flex-wrap:wrap;
+  min-height: 800px;
 }
 
 .projects_index_wrapper {
@@ -268,6 +271,7 @@ header {
   background: #fff;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.10);
+  height: 100%;
 }
 .project_item_author {
   background: #fff;
@@ -281,6 +285,7 @@ header {
 .project_item_image {
  width: 324px;
  height: 270px;
+ cursor:pointer;
 }
 
 .featured_projects {
@@ -316,8 +321,12 @@ header {
 }
 
 .comment_submit_button {
-  /*float: right;*/
-  position: relative;
+  background-color: #e86c00 !important;
+  border-color: #cf6000 !important;
+  color: #fff !important;
+  margin: 2%;
+  margin-left: 88%;
+  background-image: url() !important;
 }
 
 .project_form_title {
@@ -377,6 +386,49 @@ header {
 }
 
 iframe {
-  margin-left: 20%;
+  display: block;
+  margin: 0 auto;
   margin-bottom: 5%;
+}
+
+#disappear {
+  display: none;
+}
+
+.no_results {
+  display: flex;
+  width: 18%;
+  align-items: baseline;
+}
+
+.no_results_text {
+  margin: 5%;
+}
+
+footer {
+  height: 247px;
+  padding-top: 30px;
+  background: #404040;
+  overflow: hidden;
+  display: flex !important;
+  justify-content: center;
+}
+
+footer img {
+  margin: 47px;
+}
+
+#star {
+  color: orange;
+}
+
+.search_bar {
+  margin-top: 16px !important;
+  width: 163px !important;
+}
+
+.comment_form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
