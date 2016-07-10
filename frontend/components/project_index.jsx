@@ -9,9 +9,10 @@ const hashHistory = ReactRouter.hashHistory;
 
 const ProjectIndex = React.createClass({
   getInitialState: function() {
-    return {projects: ProjectStore.all()};
+    return {projects: ProjectStore.all(), results: ""};
   },
   componentDidMount(){
+    ProjectActions.fetchAllProjects(this.state.value);
     this.projectListener = ProjectStore.addListener(this._onChange);
   },
   componentWillUnmount(){
@@ -29,18 +30,12 @@ const ProjectIndex = React.createClass({
     hashHistory.push(`/project/${e.target.value}`);
   },
   _notFound(){
-    const notFound = (
+    this.setState({results:
       <div className="no_results">
         <h2 className="no_results_text">No results found</h2>
         <img src="http://res.cloudinary.com/doilr7vvv/image/upload/v1468099695/download_gfbmjd.png" ></img>
       </div>
-    );
-    if(this.state.projects.length < 1){
-      this.state.projects = notFound;
-      this.disappear = "disappear";
-    } else {
-      this.disappear = "";
-    }
+    });
   },
   render(){
     let projects = this.state.projects.map( project => {
@@ -60,9 +55,9 @@ const ProjectIndex = React.createClass({
     return(
       <div className="projects_index_wrapper">
         <SlideShow/>
-        <h3 id={this.disappear} className="featured_projects" ><Glyphicon glyph="star" id="star"/> Featured</h3>
+        <h3 id={this.state.projects.length < 1 ? "disappear" : ""} className="featured_projects" ><Glyphicon glyph="star" id="star"/> Featured</h3>
         <div className="projects_index">
-          {projects}
+          {this.state.projects.length < 1 ? this.state.results : projects}
         </div>
       </div>
     );

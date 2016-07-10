@@ -16,9 +16,6 @@ const SearchForm = React.createClass({
       value: ""
     };
   },
-  componentDidMount(){
-    ProjectActions.fetchAllProjects(this.state.value);
-  },
   handleChange(e){
     e.preventDefault();
     this.setState({value: e.target.value});

@@ -42,7 +42,7 @@ class Api::ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:title, :body, :user_id, :images, :video_url)
+    params.require(:project).permit(:title, :body, :user_id, :images, :video_url, :description, :material)
   end
 
 end

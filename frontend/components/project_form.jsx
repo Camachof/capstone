@@ -20,7 +20,8 @@ const ProjectForm = React.createClass({
       title: "", body: "",
       images: [], disabled: true,
       user_id: SessionStore.currentUser().id,
-      video_url: "", errors: {}
+      video_url: "", errors: {},
+      description: "", material: ""
     };
   },
   componentDidMount(){
@@ -55,6 +56,12 @@ const ProjectForm = React.createClass({
   },
   onBodyChange(e){
     this.setState({body: e.target.value});
+  },
+  onDescriptionChange(e){
+    this.setState({description: e.target.value});
+  },
+  onMaterialChange(e){
+    this.setState({material: e.target.value});
   },
   _onVideoCallback(url){
     this.setState({video_url: url});
@@ -110,21 +117,44 @@ const ProjectForm = React.createClass({
     return(
       <div className="item_wrapper">
         <form className="item_project">
+          <img className="form_pic" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1468186939/create-intro-header_epac8j.png"></img>
 
           <FormGroup className="project_form_title">
             {this.currentError}
 
-            <ControlLabel>Write a descriptibe title for your project</ControlLabel>
+            <ControlLabel>Title for your project:</ControlLabel>
             <FormControl
               type="text"
               value={this.state.title}
-              placeholder="Title"
+              placeholder="What will it be?"
               onChange={this.onTitleChange}
             />
           </FormGroup>
 
           <FormGroup className="project_form_body">
-            <ControlLabel>List all steps</ControlLabel>
+            <ControlLabel>Brief description:</ControlLabel>
+            <FormControl
+              componentClass="textarea"
+              placeholder="It's going to be amazing!"
+              value={this.state.description}
+              onChange={this.onDescriptionChange} //
+              className="project_form_description"
+            />
+          </FormGroup>
+
+          <FormGroup className="project_form_body">
+            <ControlLabel>List any supplies required:</ControlLabel>
+            <FormControl
+              componentClass="textarea"
+              placeholder="Hopefully they're cheap!"
+              value={this.state.material}
+              onChange={this.onMaterialChange} //
+              className="project_form_material"
+            />
+          </FormGroup>
+
+          <FormGroup className="project_form_body">
+            <ControlLabel>List all steps:</ControlLabel>
             <FormControl
               componentClass="textarea"
               placeholder="Instructions"

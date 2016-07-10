@@ -24,9 +24,10 @@ const ProjectItem = React.createClass({
     this.sessionListener.remove();
   },
   _onChange(){
+    console.log(ProjectStore.all());
     this.setState({project: ProjectStore.find(this.props.params.projectId)});
+    debugger;
   },
-
   _onLogIn(){
     this.forceUpdate();
   },
@@ -51,14 +52,15 @@ const ProjectItem = React.createClass({
   render(){
     let author;
     if(Object.keys(this.state.project).length === 0 && this.state.project.constructor === Object) {
-      author = <p>{this.state.project.author}</p>;
+      author = <p className="item_title_inline">{this.state.project.author}</p>;
     } else {
-      author = <p>{this.state.project.author.username}</p>;
+      author = <p className="item_title_inline">{this.state.project.author.username}</p>;
     }
 
+    // rememenr to remove ternary if no date on comments
     const comments = this.state.project.comments ? this.state.project.comments.map( comment => {
       return <div className="item_comments_wrapper" key={comment.id}>
-                <div>
+                <div className="comment_author_date">
                   <h3 className="item_comment_author" >{comment.username}</h3>
                   <h3 className="item_comment_author" >{comment.created_at ? new Date(comment.created_at).toLocaleString() : ""}</h3>
                 </div>
@@ -97,19 +99,24 @@ const ProjectItem = React.createClass({
       updateButton = "";
     }
 
+    const date = new Date(this.state.project.created_at);
+
+
     return(
       <div className="item_wrapper">
         <div className="item_project">
           <div className="item_header">
             <div className="item_header_left">
-              <h1 className="item_title">{this.state.project.title}&nbsp;</h1>
-              <p>by&nbsp;</p>
-              {author}
+              <div>
+                <h1 className="item_title">{this.state.project.title}&nbsp;</h1>
+                <p className="item_title_inline">by&nbsp;</p>
+                {author}
+              </div>
+              <p className="project_post_date">{date.toLocaleString()}</p>
             </div>
             <div className="item_subheader">
               {deleteButton}
               {updateButton}
-              <p>Posted: {this.state.project.date}</p>
             </div>
           </div>
           <div className="item_body_wrapper">
@@ -117,12 +124,21 @@ const ProjectItem = React.createClass({
               <Image className="item_image" src={this.state.project.images} responsive></Image>
             </div>
             <div>
+              <h2>Description</h2>
+              <p className="item_body" >{this.state.project.description}</p>
+            </div>
+            <div>
+              <h2>Supplies</h2>
+              <p className="item_body" >{this.state.project.material}</p>
+            </div>
+            <div>
+              <h2>Instructions</h2>
               <p className="item_body" >{this.state.project.body}</p>
             </div>
+            <iframe id='video_player' className={videoPlayer} width="560" height="315" src={url} frameborder="0" allowfullscreen></iframe>
+            <CommentForm projectId={this.props.params.projectId}/>
+            {comments}
           </div>
-          <iframe id='video_player' className={videoPlayer} width="560" height="315" src={url} frameborder="0" allowfullscreen></iframe>
-          <CommentForm projectId={this.props.params.projectId}/>
-          {comments}
         </div>
       </div>
     );
