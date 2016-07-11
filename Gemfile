@@ -53,3 +53,5 @@ end
 gem 'cloudinary'
 
 gem 'figaro'
+
+gem 'seed_dump'
