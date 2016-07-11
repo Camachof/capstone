@@ -17,8 +17,8 @@
 
  @font-face {
     font-family: 'complete_in_himregular';
-    src: url('/assets/fonts/complete_in_him-webfont.woff2') format('woff2'),
-      url('/assets/Afonts/complete_in_him-webfont.woff') format('woff');
+    src:  asset-url('/assets/fonts/complete_in_him-webfont.woff2') format('woff2'),
+       asset-url('/assets/fonts/complete_in_him-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
  }
@@ -99,6 +99,7 @@
   font-weight: 700;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   display: inline;
+  width: 100%;
 }
 
 .item_wrapper {

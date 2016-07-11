@@ -24,9 +24,7 @@ const ProjectItem = React.createClass({
     this.sessionListener.remove();
   },
   _onChange(){
-    console.log(ProjectStore.all());
     this.setState({project: ProjectStore.find(this.props.params.projectId)});
-    debugger;
   },
   _onLogIn(){
     this.forceUpdate();
