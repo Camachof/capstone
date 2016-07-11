@@ -10,15 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
+
 
 
  @font-face {
     font-family: 'complete_in_himregular';
-    src: url('/assets/fonts/complete_in_him-webfont.woff2') format('woff2'),
-      url('/assets/fonts/complete_in_him-webfont.woff') format('woff');
+    src: url('/assets/complete_in_him-webfont.woff2') format('woff2'),
+      url('/assets/complete_in_him-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
  }
