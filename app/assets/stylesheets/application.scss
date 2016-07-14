@@ -17,8 +17,8 @@
 
  @font-face {
    font-family: 'complete_in_himregular';
-   src: url('./complete_in_him-webfont.woff2') format('woff2');
-   src: url('./complete_in_him-webfont.woff') format('woff');
+   src: font-url('complete_in_him-webfont.woff2') format('woff2');
+   src: font-url('complete_in_him-webfont.woff') format('woff');
    font-weight: normal;
    font-style: normal;
  }
