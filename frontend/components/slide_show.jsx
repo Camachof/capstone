@@ -4,7 +4,7 @@ const Carousel = require('react-bootstrap').Carousel;
 const SlideShow = React.createClass({
   render() {
     return (
-      <Carousel interval={4000} >
+      <Carousel interval={40000000} >
         <Carousel.Item >
           <Carousel.Caption className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>

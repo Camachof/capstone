@@ -31,7 +31,7 @@ const SearchForm = React.createClass({
     return(
       <div>
         <form onSubmit={this._onSubmit} className="comment_form">
-          <label className="searchLabel" for="sb">let's make</label>
+          <label className="searchLabel" htmlFor="sb">let's make</label>
           <FormGroup>
             <FormControl
               id="sb"

@@ -7,6 +7,7 @@ const SessionStore = require('../stores/session_store.js');
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
 const Image = require('react-bootstrap').Image;
+const Button = require('react-bootstrap').Button;
 
 const ProjectItem = React.createClass({
   getInitialState: function() {
@@ -42,7 +43,7 @@ const ProjectItem = React.createClass({
   },
   deleteButtonLogic(comment){
     if(comment.user_id === this.state.project.author || comment.user_id === SessionStore.currentUser().id){
-      return <button className="item_comment_delete" value={comment.id} onClick={this._onDeleteComment}>Delete</button>;
+      return <Button className="item_comment_delete" value={comment.id} onClick={this._onDeleteComment}>Delete</Button>;
     } else {
       return "";
     }
@@ -86,8 +87,8 @@ const ProjectItem = React.createClass({
     let updateButton;
     if(this.state.project.author){
       if (SessionStore.currentUser().id === this.state.project.author.id){
-        deleteButton = <button className="item_header_button" onClick={this._onDelete}>Delete</button>;
-        updateButton = <button className="item_header_button_update" onClick={this._onUpdate}>Update</button>;
+        deleteButton = <Button className="item_header_button" onClick={this._onDelete}>Delete</Button>;
+        updateButton = <Button className="item_header_button" onClick={this._onUpdate}>Update</Button>;
       } else {
         deleteButton = "";
         updateButton = "";
@@ -105,7 +106,7 @@ const ProjectItem = React.createClass({
         <div className="item_project">
           <div className="item_header">
             <div className="item_header_left">
-              <div>
+              <div className="item_title_wrapper">
                 <h1 className="item_title">{this.state.project.title}&nbsp;</h1>
                 <p className="item_title_inline">by&nbsp;</p>
                 {author}
@@ -133,7 +134,7 @@ const ProjectItem = React.createClass({
               <h2>Instructions</h2>
               <p className="item_body" >{this.state.project.body}</p>
             </div>
-            <iframe id='video_player' className={videoPlayer} width="560" height="315" src={url} frameborder="0" allowfullscreen></iframe>
+            <iframe id='video_player' className={videoPlayer} width="560" height="315" src={url} frameBorder="0" allowFullScreen></iframe>
             <CommentForm projectId={this.props.params.projectId}/>
             {comments}
           </div>

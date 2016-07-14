@@ -3,6 +3,7 @@ const ProjectActions = require('../actions/project_actions');
 const ProjectStore = require('../stores/project_store.js');
 const SlideShow = require('./slide_show.jsx');
 const Glyphicon = require('react-bootstrap').Glyphicon;
+const Link = require('react-router').Link;
 
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -12,8 +13,8 @@ const ProjectIndex = React.createClass({
     return {projects: ProjectStore.all(), results: ""};
   },
   componentDidMount(){
-    ProjectActions.fetchAllProjects(this.state.value);
     this.projectListener = ProjectStore.addListener(this._onChange);
+    ProjectActions.fetchAllProjects(this.state.value);
   },
   componentWillUnmount(){
     this.projectListener.remove();
@@ -21,13 +22,6 @@ const ProjectIndex = React.createClass({
   _onChange(){
     this.setState({projects: ProjectStore.all()});
     this._notFound();
-  },
-  _takeToProject(e){
-    hashHistory.push(`project/${e.target.value}`);
-  },
-  _onTitleClick(e){
-    e.preventDefault();
-    hashHistory.push(`/project/${e.target.value}`);
   },
   _notFound(){
     this.setState({results:
@@ -41,11 +35,13 @@ const ProjectIndex = React.createClass({
     let projects = this.state.projects.map( project => {
       return (
         <div className="project_item" key={project.id}>
-          <a onClick={this._takeToProject}>
-            <img value={project.id} className="project_item_image" src={project.images}></img>
-          </a>
+            <Link to={`project/${project.id}`}>
+              <img className="project_item_image" src={project.images} />
+            </Link>
           <div className="project_info">
-            <a className="project_item_title" value={project.id} onClick={this._onTitleClick} >{project.title}</a>
+            <Link to={`project/${project.id}`} className="project_item_title">
+              {project.title}
+            </Link>
             <p className="project_item_author" >by {project.author.username}</p>
           </div>
         </div>
