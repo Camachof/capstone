@@ -1,6 +1,6 @@
-# Instructables
+# Destructables
 
-[heroku]: http://instructables.herokuapp.com/
+[destructables]: http://destructables.xyz
 
 Destructables is a place to find code for humans; step by step instructions on how to build (or destroy) anything.
 
@@ -10,15 +10,18 @@ It takes inspiration from instructables.com but uses Rails, React and Posgres to
 
 Search functionality will filter projects to match text in either the title or body of the project. The splash page transitions to a more compact view so results can be easily browsed.
 
-![Alt text](/Search.jpg?raw=true)
+![search-screenshot]
+[search-screenshot]: ./docs/Search.png
 
 Modals are used to preserve a linear user experience of the site. If a user attempts to create a new project without signing in, a modal will automatically pop up.
 
-![Alt text](./Modal.jpg)
+![modal-screenshot]
+[modal-screenshot]: ./docs/Modal.png
 
 Specific sign up/log in feedback is displayed immediately to avoid any confusion on the authentication requirements.
 
-![Alt text](./Log_in.jpg)
+![login-screenshot]
+[login-screenshot]: ./docs/Log_in.png
 
 ## Implementation
 
@@ -49,7 +52,8 @@ class Project < ActiveRecord::Base
 
 The production of a new project is so streamlined that all content was seeded using the site and seed_dump gem:
 
-![Alt text](app/docs/form.jpg)
+![form-screenshot]
+[form-screenshot]: ./docs/Form.png
 
 
 ## Future Directions for the Project
