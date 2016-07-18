@@ -1,273 +1,63 @@
-## Heroku!
-
-https://instructables.herokuapp.com/
-
-## DEstructables
-
-DEstructables is a web application inspired by Instructables that will be build using Ruby on Rails and React.js.
+# Instructables
 
-## MVP Checklist Format
+[heroku]: http://instructables.herokuapp.com/
 
-0. New account creation, login, and guest/demo login
-0. A production README, replacing this README (NB: check out the sample production README -- you'll write this later)
-0. Hosting on Heroku
-0. Projects
-  * Adequate styling
-  * Smooth, bug-free navigation
-  * Adequate and appropriate seeds to demonstrate the feature
-0. Commenting on projects
-  * Adequate styling
-  * Smooth, bug-free navigation
-  * Adequate and appropriate seeds to demonstrate the feature
-0. Adding photos and videos to projects
-  * Adequate styling
-  * Smooth, bug-free navigation
-  * Adequate and appropriate seeds to demonstrate the feature
-0. Searching projects by keyword
-  * Adequate styling
-  * Smooth, bug-free navigation
-  * Adequate and appropriate seeds to demonstrate the feature
+Destructables is a place to find code for humans; step by step instructions on how to build (or destroy) anything.
 
-## Wireframes
+It takes inspiration from instructables.com but uses Rails, React and Posgres to explore the possibilities of a single-page site.
 
-https://www.draw.io/#Lproject_detail.xml
-https://www.draw.io/#Lroot_project.xml
-https://www.draw.io/#Lproject_textEditor.xml
-https://www.draw.io/#Lproject_new.xml
+## Features
 
-## Component Hierarchy
+Search functionality will filter projects to match text in either the title or body of the project. The splash page transitions to a more compact view so results can be easily browsed.
 
-**Bolded** components are associated with routes.
+![Alt text](/Search.jpg?raw=true)
 
-* **App**
-  * ProjectsIndex
-    * Search
-    * ProjectSlide
-  * **ProjectItem**
-    * ProjectItemNavbar
-    * ProjectItemCommentForm
-  * **ProjectForm**
-  * **ProjectUser**
+Modals are used to preserve a linear user experience of the site. If a user attempts to create a new project without signing in, a modal will automatically pop up.
 
-## Routes
+![Alt text](./Modal.jpg)
 
-Definetly need help figuring this out!
+Specific sign up/log in feedback is displayed immediately to avoid any confusion on the authentication requirements.
 
-* **component:** `App` **path:** `/`
-  * **component:** `ProjectsIndex` **path:** index
-  * **component:** `ProjectIndexItem` **path:** `project/:projectId`
-  * **component:** `ProjectUser` **path:** `/user/:userId`
+![Alt text](./Log_in.jpg)
 
+## Implementation
 
-## Flux Cycles
+Destructables has it's own authentication pattern that keeps user's passwords safe by using the BCrypt gem:
 
-### Projects API Request Actions
+```ruby
+def is_password?(password)
+  BCrypt::Password.new(self.password_digest).is_password?(password)
+end
 
-* `fetchAllProjects`
-  0. invoked from `ProjectsIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/projects` is called.
-  0. `receiveAllProjects` is set as the callback.
+def password=(password)
+  @password = password
+  self.password_digest = BCrypt::Password.create(password)
+end
+  ```
 
-* `createProject`
-  0. invoked from `PUBLISH` button `onClick`
-  0. `POST /api/projects` is called.
-  0. `receiveSingleProject` is set as the callback.
+Unless a search is performed, only one ajax request is necessary to navigate the whole site. Through associations, all relevant information is fetched. This pattern could easily be altered for scaling.
 
-* `fetchSingleProject`
-  0. invoked from `ProjectItem` `didMount`/`willReceiveProps`
-  0. `GET /api/project/:id` is called.
-  0. `receiveSingleProject` is set as the callback.
+```ruby
+class Project < ActiveRecord::Base
 
-* `updateProject`
-  0. invoked from `ProjectForm` `onSubmit`
-  0. `POST /api/projects` is called.
-  0. `receiveSingleProject` is set as the callback.
+  belongs_to :author,
+    class_name: "User",
+    foreign_key: :user_id
 
-* `destroyProject`
-  0. invoked from delete note button `onClick`
-  0. `DELETE /api/project/:id` is called.
-  0. `removeProject` is set as the callback.
+  has_many :comments
+```
 
-### Projects API Response Actions
+The production of a new project is so streamlined that all content was seeded using the site and seed_dump gem:
 
-* `receiveAllProjects`
-  0. invoked from an API callback.
-  0. `ProjectsStore` store updates `_projects` and emits change.
+![Alt text](app/docs/form.jpg)
 
-* `receiveSingleProjects`
-  0. invoked from an API callback.
-  0. `ProjectsStore` store updates `_projects[id]` and emits change.
 
-* `removeProjects`
-  0. invoked from an API callback.
-  0. `ProjectsStore` store removes `_projects[id]` and emits change.
+## Future Directions for the Project
 
-### Store Listeners
+The next feature to be implemented will be a rich text editor using React-Quill. This will give users a wider range of tools to organize content.
 
-* `ProjectsIndex` component listens to `Project` store.
-* `ProjectItem` component listens to `Project` store.
+Eventually, users will be able to associate images with blocks of text so that every step in the instructions has a visual aid.
 
-## SearchSuggestion Cycles
+Project categories will make browsing more efficient and will allow the splash page to feature a specific type of content.
 
-* `fetchSearchSuggestions`
-  0. invoked from `Search` `onChange` when there is text
-  0. `GET /api/projects` is called with `text` param.
-  0. `receiveSearchSuggestions` is set as the callback.
-
-* `receiveSearchSuggestions`
-  0. invoked from an API callback.
-  0. `SearchSuggestion` store updates `_suggestions` and emits change.
-
-* `removeSearchSuggestions`
-  0. invoked from `Search` `onChange` when empty
-  0. `SearchSuggestion` store resets `_suggestions` and emits change.
-
-### Store Listeners
-
-* `Search` component listens to `SearchSuggestion` store.
-
-## Schema
-
-https://github.com/Camachof/capstone/blob/master/docs/database.md
-
-## API Endpoints
-
-https://github.com/Camachof/capstone/blob/master/docs/api.md
-
-## Implementation Timeline
-
- Attempt at styling at every phase!
-
-### Phase 1: Backend setup and Front End User Authentication (1 day, W1 Tu 6pm)
-
-Objective: Functioning rails project with Authentication
-
- * create new project
- * create User model
- * authentication
- * user signup/signin pages
- * blank landing page after signin
-
- - [ ] create new project
- - [ ] create User model
- - [ ] authentication
- - [ ] user signup/signin pages
- - [ ] blank landing page after signin
-
-### Phase 2: Project Model, API, and basic APIUtil (1.5 days, W1 Th 12pm)
-
-Objective: Project can be created, read, edited and destroyed through the API.
-
- * create Project model
- * seed the database with a small amount of test data
- * CRUD API for projects (ProjectsController)
- * jBuilder views for projects
- * setup Webpack & Flux scaffold
- * setup APIUtil to interact with the API
- * test out API interaction in the console.
-
- - [ ] create Project model
- - [ ] seed the database with a small amount of test data
- - [ ] CRUD API for projects (ProjectsController)
- - [ ] jBuilder views for projects
- - [ ] setup Webpack & Flux scaffold
- - [ ] setup APIUtil to interact with the API
- - [ ] test out API interaction in the console.
-
-### Phase 3: Flux Architecture and Router (1.5 days, W1 F 6pm)
-
-Objective: Projects can be created, read, edited and destroyed with the user interface.
-
- * setup the flux loop with skeleton files
- * setup React Router
- * implement each project component, building out the flux loop as needed.
- * ProjectsIndex
- * ProjectItem
- * ProjectForm
-
- - [ ] setup the flux loop with skeleton files
- - [ ] setup React Router
- - [ ] implement each project component, building out the flux loop as needed.
- - [ ] ProjectsIndex
- - [ ] ProjectItem
- - [ ] ProjectForm
- <!--* ProjectUser ?-->
-
-### Phase 4: Start Styling (0.5 days, W2 M 12pm)
-
-Objective: Existing pages (including signup/signin) will look good.
-
- * create a basic style guide
- * position elements on the page
- * add basic colors & styles
-
- - [ ] create a basic style guide
- - [ ] position elements on the page
- - [ ] add basic colors & styles
-
-### Phase 5: Comments (1 day, W2 Tu 12pm)
-
-Objective: Comments belong to Projects
-
-<<<<<<< HEAD
-* create comments model
-* build out API, Flux loop, and components for:
- * Comments CRUD
- * comments requires a project
-* Use CSS to style new views
-
-- [ ] create comments model
-- [ ] build out API, Flux loop, and components for:
- - [ ] Comments CRUD
- - [ ] comments requires a project
-- [ ] Use CSS to style new views
-
-
-### Phase 6: Tags (1 days, W2 Th 12pm)
-
-Objective: Projects can be tagged with multiple tags, and tags are searchable.
-
-
- * create Tag model and join table
- * build out API, Flux loop, and components for:
-  * fetching tags for projects
-  * adding tags to projects
-  * creating tags while adding to projects
-  * searching projects by tag
- * Style new elements
-
- - [ ] create Tag model and join table
- - [ ] build out API, Flux loop, and components for:
-  - [ ] fetching tags for projects
-  - [ ] adding tags to projects
-  - [ ] creating tags while adding to projects
-  - [ ] searching projects by tag
- - [ ] Style new elements
-
-
-### Phase 7: Allow Complex Styling in Notes (0.5 days, W2 Th 6pm)
-
-objective: Enable complex styling of projects.
-
- * Integrate Draft.js to make projects!!!
- * Use Rails helpers to sanitize HTML before rendering.
-
- - [ ] Integrate Draft.js to make projects!!!
- - [ ] Use Rails helpers to sanitize HTML before rendering.
-
-### Phase 8: Styling Cleanup and Seeding (1 day, W2 F 6pm)
-
-objective: Make the site feel more cohesive and awesome.
-
- * Get feedback on my UI from others
- * Refactor HTML classes & CSS rules
- * Add modals, transitions, and other styling flourishes.
-
- - [ ] Get feedback on my UI from others
- - [ ] Refactor HTML classes & CSS rules
- - [ ] Add modals, transitions, and other styling flourishes.
-
-Bonus Features (TBD)
-
-Develop featured project channels
-Create categories for projects
+Finally, users will bee able to search directly from the carousel on the splash page.
