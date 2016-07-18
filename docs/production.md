@@ -10,7 +10,7 @@ It takes inspiration from instructables.com but uses Rails, React and Posgres to
 
 Search functionality will filter projects to match text in either the title or body of the project. The splash page transitions to a more compact view so results can be easily browsed.
 
-![Alt text](app/docs/Search.jpg)
+![Alt text](/Search.jpg?raw=true)
 
 Modals are used to preserve a linear user experience of the site. If a user attempts to create a new project without signing in, a modal will automatically pop up.
 
