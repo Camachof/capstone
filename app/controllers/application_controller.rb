@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def require_no_user!
-   redirect_to cats_url if current_user
-  end
+  # def require_no_user!
+  #  redirect_to cats_url if current_user
+  # end
 
   def current_user
     return nil unless session[:session_token]
