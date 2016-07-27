@@ -66,7 +66,7 @@ const ProjectItem = React.createClass({
                 <h3 className="item_comment" >{comment.body}</h3>
                 {this.deleteButtonLogic(comment)}
             </div>;
-    }) : "";
+    }).reverse() : "";
 
     let url;
     let videoPlayer;

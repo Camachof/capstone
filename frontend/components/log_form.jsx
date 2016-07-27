@@ -14,7 +14,7 @@ const HelpBlock = require('react-bootstrap').HelpBlock;
 const LogForm = React.createClass({
   getInitialState: function() {
     return {
-      username: "", password: "", errors: {}
+      username: "", password: "", errors: {}, state: "success"
     };
   },
   componentDidMount(){
@@ -38,7 +38,11 @@ const LogForm = React.createClass({
     }
   },
   _onName(e){
-    this.setState({username: e.target.value});
+    if(e.target.value.length < 6){
+      this.setState({username: e.target.value, state: "warning"});
+    } else {
+      this.setState({username: e.target.value});
+    }
   },
   _onPass(e){
     this.setState({password: e.target.value});
@@ -63,31 +67,33 @@ const LogForm = React.createClass({
         errors.push(i + " " + this.state.errors[i]);
       }
     }
-    // hacky way to remove error from greeting. consider fixing.
+
     this.state.errors = {};
 
     return(
       <form>
 
-        <FormGroup>
+        <FormGroup validationState={this.state.state}>
           <FormControl
             type="text"
             value={this.state.username}
             placeholder="Username"
             onChange={this._onName}
           />
+        
         </FormGroup>
 
-        <FormGroup>
+        <FormGroup validationState={this.state.state}>
           <FormControl
             type="password"
             value={this.state.password}
             placeholder="Password"
             onChange={this._onPass}
           />
+        
         </FormGroup>
 
-        <FormControl.Feedback />
+        
         <HelpBlock>{errors}</HelpBlock>
 
         <Button type="submit" onClick={this._onSignUp}>
