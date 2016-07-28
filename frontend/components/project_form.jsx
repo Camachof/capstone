@@ -11,6 +11,8 @@ const ControlLabel = require('react-bootstrap').ControlLabel;
 const FormControl = require('react-bootstrap').FormControl;
 const Button = require('react-bootstrap').Button;
 
+const ReactQuill = require('react-quill');
+
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
 
@@ -153,16 +155,10 @@ const ProjectForm = React.createClass({
             />
           </FormGroup>
 
-          <FormGroup className="project_form_body">
-            <ControlLabel>List all steps:</ControlLabel>
-            <FormControl
-              componentClass="textarea"
-              placeholder="Instructions"
-              value={this.state.body}
-              onChange={this.onBodyChange}
-              className="project_form_body_input"
-            />
-          </FormGroup>
+          <ReactQuill theme="base"
+                      value={this.state.body}
+                      onChange={this.onBodyChange}
+                       />
 
           <div className="form_image_upload">
             {showImage}
