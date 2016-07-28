@@ -24,7 +24,7 @@ User.create!([
   {username: "memyself", password_digest: "$2a$10$mP2j/dI3Hbj9qJZIKxoDdOUEGPHO7qo0E40DByVrUemWd8x9txiNu", session_token: "PleP5NezO-KPv-zxXYpHFA"},
   {username: "Toggle", password_digest: "$2a$10$Gi4FIOCRPBjA29UUelHqGOlNzbl/Y3PloAbDVaNVN1bwed41OwBnu", session_token: "2lGm24GtIBpWJlXEuEtrgA"},
   {username: "rainbowRaider", password_digest: "$2a$10$/fLYU3ZAn9aJapFfOQGMjuvuzCwwjMcUTd5L4Pd5Avd7pv6kl2BX6", session_token: "DKQ3Mrq7fvId15JU0r20LQ"},
-  {username: "DippieHippie", password_digest: "$2a$10$invY13RLP5uzB.oxKQ1PpOIHeDnF.uGsrSRcuOs2OVXApyfJX.Ati", session_token: "OkhZlawYRaX3f2xorJl4vg"}
+  {username: "DippieHippie", password_digest: "$2a$10$invY13RLP5uzB.oxKQ1PpOIHeDnF.uGsrSRcuOs2OVXApyfJX.Ati", session_token: "OkhZlawYRaX3f2xorJl4vg"},
   {username: "guest", password_digest: "$2a$10$51OuibrlFl8WjZ4Mj02C5.NVD5U6SY9bWsoiw3V0ZhssXcrTOLGdS", session_token: "66byroRGtfKDodWKCcCaxA"}
   ])
   Project.create!([
