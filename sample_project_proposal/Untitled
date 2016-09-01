@@ -1,0 +1,61 @@
+= Summary
+
+DEstructables is a web application inspired by Instructables that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+
+## MVP Checklist Format
+
+0. New account creation, login, and guest/demo login
+0. A production README, replacing this README (NB: check out the sample production README -- you'll write this later)
+0. Hosting on Heroku
+0. Projects
+  * Adequate styling
+  * Smooth, bug-free navigation
+  * Adequate and appropriate seeds to demonstrate the feature
+0. Commenting on projects
+  * Adequate styling
+  * Smooth, bug-free navigation
+  * Adequate and appropriate seeds to demonstrate the feature
+0. Adding photos and videos to projects
+  * Adequate styling
+  * Smooth, bug-free navigation
+  * Adequate and appropriate seeds to demonstrate the feature
+0. Searching projects by keyword
+  * Adequate styling
+  * Smooth, bug-free navigation
+  * Adequate and appropriate seeds to demonstrate the feature
+
+## Component Hierarchy
+
+**Bolded** components are associated with routes.
+
+(:exclamation: Remember, the bolded components are created by their
+associated routes, so the nesting of your bolded components must
+_**exactly**_ match the nesting of your routes.)
+
+* **App**
+  * ProjectIndex
+    * Search
+    * ProjectNavbar
+    * ProjectSlide
+  * **ProjectIndexItem**
+    * ProjectIndexItemNavbar
+    * ProjectIndexItemCommentForm
+  * **ProjectForm**
+    * ProjectFormItem
+    * ProjectFormItemTextEditor ??
+
+
+
+
+
+## Routes
+
+* **component:** `App` **path:** `/`
+  * **component:** `NotesIndex` **path:** index
+  * **component:** `NotesIndex` **path:** `notebooks/:notebookId`
+    * **component:** `NoteDetail` **path:** `notes/:noteId`
+  * **component:** `NotesIndex` **path:** none
+    * **component:** `NoteDetail` **path:** `notes/:noteId`
+
+For Routes that have no `notebookId`, `NotesIndex` will render all
+notes.
