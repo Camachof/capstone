@@ -56,7 +56,6 @@ const ProjectItem = React.createClass({
       author = <p className="item_title_inline">{this.state.project.author.username}</p>;
     }
 
-    // rememenr to remove ternary if no date on comments
     const comments = this.state.project.comments ? this.state.project.comments.map( comment => {
       return <div className="item_comments_wrapper" key={comment.id}>
                 <div className="comment_author_date">

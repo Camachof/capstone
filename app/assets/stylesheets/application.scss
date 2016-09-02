@@ -14,11 +14,13 @@
  *= require_self
  */
 
-
  .logo {
   margin-top: 40px;
   cursor: pointer;
-  margin-right: 6%;
+ }
+
+ .frontLogo {
+   width: 160px;
  }
 
  .navbar-form {
@@ -124,11 +126,6 @@
   margin-right: 2%;
 }
 
-
-/*.item_header h1 h3 {
-  margin: 0 !important;
-}*/
-
 .slideItem {
   width: 100%;
 }
@@ -154,15 +151,18 @@
 
 .carousel-caption h3 {
   font-family: 'Rock Salt', cursive;
-  font-size: 70px;
+  font-size: 3.5vw;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   letter-spacing: 4px;
 }
 
 .title_input_text {
-  font-size: 70px !important;
+  font-size: 3.5vw !important;
   font-family: 'helvetica' !important;
   vertical-align: middle;
+  border-bottom: 5px solid white;
+  margin-left: 7%;
+  width: 100%;
 }
 
 .title_search_bar {
@@ -176,41 +176,43 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+  cursor: pointer;
 }
 
-.title_input_text {
-  background-image: url(http://res.cloudinary.com/doilr7vvv/image/upload/v1467928203/makeitsearch-bg_ofeog6.png);
-  background-repeat: no-repeat;
-  background-position: 0% 50%;
-  width: 600px;
-  text-align: left;
-  margin-left: 50px;
-}
+// .title_input_text {
+//   background-image: url(http://res.cloudinary.com/doilr7vvv/image/upload/v1467928203/makeitsearch-bg_ofeog6.png);
+//   background-repeat: no-repeat;
+//   background-position: 0% 50%;
+//   width: 600px;
+//   text-align: left;
+//   margin-left: 50px;
+// }
 
-header {
-  width: 100%;
-  min-height: 99px;
-  color: #333;
-}
 
 .top_header {
  display: flex;
- background-color: #eeeeee;
- justify-content: space-around;
+ justify-content: space-around;;
  flex-direction: row;
+ flex-wrap: wrap;
  align-content: center;
- height: 61px;
+ color: #333;
+ min-height: 99px;
+ background: -webkit-linear-gradient(top, #eeeeee 62%, white 50%)
 }
 
 .top_header_left {
  display: flex;
  justify-content: space-around;
  flex-direction: row;
+ flex-wrap: wrap;
  align-items: center;
- padding-right: 24%;
+ height: 61px;
+  background-color: #eeeeee;
 }
 
 .top_header_right {
+  height: 61px;
+   background-color: #eeeeee;
  display: flex;
  justify-content: space-around;
  flex-direction: row;
@@ -237,6 +239,8 @@ header {
   justify-content: center;
   flex-direction: row;
   flex-wrap:wrap;
+  margin-top: 3%;
+  margin-bottom: 3%;
   min-height: 800px;
 }
 
@@ -464,4 +468,48 @@ footer img {
 
 .project_post_date {
   width: 21%;
+}
+
+textarea {
+  resize: none;
+}
+
+@media(max-width: 930px) {
+  .top_header_left {
+    height: 100%;
+    width: 100%;
+    background-color: #eeeeee;
+  }
+
+  .top_header_left a {
+    margin: 0;
+  }
+
+  .top_header_right {
+      width: 100%;
+      background-color: #eeeeee;
+  }
+}
+
+@media(min-width: 408px) and (max-width: 710px) {
+  .top_header {
+    flex-direction: column;
+  }
+  .top_header_left {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1436px) and (max-width: 1910px) {
+  .title_search {
+    display: flex
+  }
+}
+
+@media (min-width: 0px) and (max-width: 800px){
+  .carousel-inner {
+    display: none;
+  }
 }

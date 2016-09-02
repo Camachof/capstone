@@ -51,7 +51,6 @@ const ProjectIndex = React.createClass({
     return(
       <div className="projects_index_wrapper">
         <SlideShow/>
-        <h3 id={this.state.projects.length < 1 ? "disappear" : ""} className="featured_projects" ><Glyphicon glyph="star" id="star"/> Featured</h3>
         <div className="projects_index">
           {this.state.projects.length < 1 ? this.state.results : projects}
         </div>

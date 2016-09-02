@@ -24,8 +24,6 @@ const App = React.createClass({
   },
   _onGreet(){
     let currentUser = SessionStore.currentUser();
-    // greeting can be a greeting or the login/logout buttons
-    let greeting;
 
     if (Object.keys(currentUser).length === 0 && currentUser.constructor === Object){
       return (
@@ -65,17 +63,15 @@ const App = React.createClass({
 
     return(
       <div className={this.state.searched}>
-        <header>
           <div className="top_header" >
             <div className="top_header_left">
-                <a className="logo" onClick={this._onExplore}><img alt="Instructables" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467308145/header-logo_yroad2.png" /></a>
+                <a className="logo" onClick={this._onExplore}><img alt="Instructables" className="frontLogo" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1472600282/Logomakr_80TqEK_pairsw.png" /></a>
                 <SearchForm removeCarousel={this._onSearch}/>
                 <a title="Explore" className="header_link" onClick={this._onExplore}>Explore</a>
                 <a title="Publish" className="header_link" onClick={this._onPublish}>Publish</a>
             </div>
             {this.state.greeting}
           </div>
-        </header>
         {this.props.children}
         <footer>
           <a href="https://github.com/Camachof">
