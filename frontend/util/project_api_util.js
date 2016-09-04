@@ -11,6 +11,7 @@ const ProjectApiUtil = {
       }
     });
   },
+<<<<<<< HEAD
   fetchDefaultProjects(callback){
     $.ajax({
       url: '/api/projects',
@@ -21,6 +22,8 @@ const ProjectApiUtil = {
       }
     });
   },
+=======
+>>>>>>> f47837c2d2dcc6f5829102faa211fe6285c1480a
   fetchProject(id, callback){
     $.ajax({
       url: `/api/projects/${id}`,
