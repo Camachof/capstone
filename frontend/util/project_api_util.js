@@ -11,6 +11,16 @@ const ProjectApiUtil = {
       }
     });
   },
+  fetchDefaultProjects(callback){
+    $.ajax({
+      url: '/api/projects',
+      method: 'GET',
+      data: {filter: "break"},
+      success(response){
+        callback(response);
+      }
+    });
+  },
   fetchProject(id, callback){
     $.ajax({
       url: `/api/projects/${id}`,

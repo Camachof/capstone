@@ -406,13 +406,17 @@ iframe {
 }
 
 .no_results {
-  display: flex;
-  width: 18%;
-  align-items: baseline;
+  margin-left: 5%;
+  margin-top: 2%;
+  margin-bottom: -1%;
 }
 
 .no_results_text {
-  margin: 5%;
+  font-size: 29px;
+}
+
+.no_results_text img {
+  vertical-align: bottom;
 }
 
 footer {

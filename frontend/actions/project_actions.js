@@ -9,6 +9,9 @@ module.exports= {
   fetchAllProjects(filter){
     ProjectApiUtil.fetchAllProjects(filter, this.receiveAllProjects);
   },
+  fetchDefaultProjects(){
+    ProjectApiUtil.fetchDefaultProjects(this.receiveDeafultProjects);
+  },
   fetchProject(id){
     ProjectApiUtil.fetchProject(id, this.receiveProject);
   },
@@ -31,6 +34,12 @@ module.exports= {
     AppDispatcher.dispatch({
       actionType: ProjectConstants.PROJECTS_RECEIVED,
       projects: payload
+    });
+  },
+  receiveDeafultProjects(payload){
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.DEFAULTS_RECEIVED,
+      project: payload
     });
   },
   receiveProject(payload){
