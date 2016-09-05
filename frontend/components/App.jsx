@@ -45,6 +45,18 @@ const App = React.createClass({
     SessionActions.logout();
     hashHistory.push(`/`);
   },
+  _onDropdownChange(e){
+    e.preventDefault();
+    debugger;
+
+    if (e.target.value === "publish"){
+      hashHistory.push("/form");
+    } else if (e.target.value === "explore"){
+      ProjectActions.fetchAllProjects();
+      this.setState({searched: ""});
+      hashHistory.push("/");
+    }
+  },
   _onExplore(e){
     e.preventDefault();
     ProjectActions.fetchAllProjects();
@@ -74,7 +86,7 @@ const App = React.createClass({
           </div>
         {this.props.children}
         <footer>
-          <a href="https://github.com/Camachof">
+          <a href="https://github.com/camachom">
             <img src="http://res.cloudinary.com/doilr7vvv/image/upload/v1468102800/GitHub-Mark-Light-120px-plus_tr7xmn.png"></img>
           </a>
           <a href="https://www.linkedin.com/in/camachomartin">

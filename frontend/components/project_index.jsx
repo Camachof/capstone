@@ -13,7 +13,7 @@ const ProjectIndex = React.createClass({
     return {projects: ProjectStore.all(), results: "", defaults: ProjectStore.defaults(), backup: false};
   },
   componentDidMount(){
-    ProjectStore.addListener(this._onChange);
+    this.projectListener = ProjectStore.addListener(this._onChange);
     ProjectActions.fetchAllProjects();
   },
   componentWillUnmount(){
@@ -72,7 +72,6 @@ const ProjectIndex = React.createClass({
         );
       });
     }
-    debugger;
 
     return(
       <div className="projects_index_wrapper">

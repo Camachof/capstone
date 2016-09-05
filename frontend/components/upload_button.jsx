@@ -4,7 +4,8 @@ const Button = require('react-bootstrap').Button;
 var UploadButton = React.createClass({
   upload: function (e) {
     e.preventDefault();
-    cloudinary.openUploadWidget(window.cloudinary_options, function(error, results){
+
+    cloudinary.openUploadWidget({cloud_name: 'doilr7vvv', upload_preset: 'v24sfxqs'}, function(error, results){
       if(error === null){
         this.props.uploaded(results[0]);
       }

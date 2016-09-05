@@ -5,17 +5,26 @@ const hashHistory = ReactRouter.hashHistory;
 
 const SlideShow = React.createClass({
   _onClickRainbow(e){
+    hashHistory.push(`/project/27`);
+  },
+  _onClickSpace(e){
     hashHistory.push(`/project/7`);
   },
   _onClickMilk(e){
     hashHistory.push(`/project/12`);
+  },
+  _onClickBrew(e){
+    hashHistory.push(`/project/28`);
+  },
+  _onClickWear(e){
+    hashHistory.push(`/project/26`);
   },
 
   render() {
     return (
       <Carousel interval={4000} >
         <Carousel.Item >
-          <Carousel.Caption onClick={this._onClickWearables} className="title_search">
+          <Carousel.Caption onClick={this._onClickWear} className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
             <div className="splashSearch">
               <h3 className="title_input_text">wearables</h3>
@@ -42,7 +51,7 @@ const SlideShow = React.createClass({
           <img className="slideItem" src="http://res.cloudinary.com/doilr7vvv/image/upload/v1467580960/F7YJBD0IPEIICRW_nxrt1e.jpg" />
         </Carousel.Item>
         <Carousel.Item >
-          <Carousel.Caption onClick={this._onClickHomebrew} className="title_search">
+          <Carousel.Caption onClick={this._onClickBrew} className="title_search">
             <h3 className="title_input_presearch">Let's Make</h3>
             <div className="splashSearch">
               <h3 className="title_input_text">homebrew</h3>
